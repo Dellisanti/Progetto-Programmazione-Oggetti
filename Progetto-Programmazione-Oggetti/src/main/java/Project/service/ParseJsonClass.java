@@ -6,9 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
-import java.util.Vector;
-
-import org.json.simple.JSONArray;
+//import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -48,12 +46,12 @@ public class ParseJsonClass {
 		}
 		JSONObject SRiseSSet= (JSONObject) obj.get("sys");
 		JSONObject temp = (JSONObject) obj.get("main");
-		JSONArray Jarray = (JSONArray) obj.get("weather");
+		//JSONArray weather = (JSONArray) obj.get("weather");
 		long sunrise = (Long)SRiseSSet.get("sunrise");
 		String SunRise = sdf.format(new java.util.Date(sunrise*1000));
 		city.setSunrise(SunRise);
 		long sunset = (Long)SRiseSSet.get("sunset");
-		String SunSet = sdf.format(new java.util.Date(sunrise*1000));
+		String SunSet = sdf.format(new java.util.Date(sunset*1000));
 		city.setSunset(SunSet);
 		double tempMin = (double)temp.get("temp_min");
 		city.setTempMin(tempMin);

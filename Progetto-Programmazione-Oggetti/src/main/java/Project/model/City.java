@@ -59,7 +59,7 @@ public class City {
 			System.out.println("Oggi : ");
 			System.out.println("La temperatura massima è : "+cityArray.get(i).getTempMax()+"C°");
 			System.out.println("La temperatura minima è : "+cityArray.get(i).getTempMin()+"C°");
-			System.out.println("La temperatura media è : "+cityArray.get(i).getTempMax()+"C°");
+			System.out.println("La temperatura media è : "+cityArray.get(i).getTempMed()+"C°");
 			System.out.println("L'orario dell'alba è : "+cityArray.get(i).getSunrise());
 			System.out.println("L'orario del tramonto è : "+cityArray.get(i).getSunset());
 		}

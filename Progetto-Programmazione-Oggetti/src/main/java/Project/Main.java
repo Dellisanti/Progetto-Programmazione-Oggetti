@@ -3,8 +3,8 @@ package Project;
 import java.util.Scanner;
 import java.util.Vector;
 
-import Project.model.City;
-import Project.service.ParseJsonClass;
+import Project.model.*;
+import Project.service.*;
 
 public class Main {
 	
@@ -17,7 +17,7 @@ public class Main {
 		City city = new City();
 		ParseJsonClass parse;
 		
-		final String ApiKey="";
+		final String ApiKey="1a66b38d493817c11fa185d2e16b2aed";
 		
 		do {
 			System.out.print("Inserisci il paese : ");

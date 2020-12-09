@@ -17,7 +17,7 @@ public class Main {
 		City city = new City();
 		ParseJsonClass parse;
 		
-		final String ApiKey="7d93f19f21077353e39f87032051beae";
+		final String ApiKey="";
 		
 		do {
 			System.out.print("Inserisci il paese : ");

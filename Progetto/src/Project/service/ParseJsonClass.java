@@ -1,6 +1,10 @@
 package Project.service;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -14,6 +18,9 @@ import org.json.simple.parser.ParseException;
 import Project.model.City;
 
 public class ParseJsonClass {
+	
+	private BufferedWriter fileW;
+	private BufferedReader fileR;
 	
 	public String ApiData (String url) {
 		String data = "";
@@ -52,14 +59,29 @@ public class ParseJsonClass {
 		String SunRise = sdf.format(new java.util.Date(sunrise*1000));
 		city.setSunrise(SunRise);
 		long sunset = (Long)SRiseSSet.get("sunset");
-		String SunSet = sdf.format(new java.util.Date(sunrise*1000));
+		String SunSet = sdf.format(new java.util.Date(sunset*1000));
 		city.setSunset(SunSet);
-		double tempMin = (double)temp.get("temp_min");
-		city.setTempMin(tempMin);
-		double tempMax = (double)temp.get("temp_max");	
-		city.setTempMax(tempMax);
-		double tempMed = (tempMin+tempMax)/2; 
-		city.setTempMed(tempMed);
+		
+		String next;
+		try {
+			fileR = new BufferedReader(new FileReader("OrariAlbaTramonto.txt"));
+			fileW = new BufferedWriter(new FileWriter("OrariAlbaTramonto.txt"));
+			do {
+				next=fileR.readLine();
+				if(next!=null)
+					fileW.write(SunRise+" , "+SunSet);
+			}while(next!=null);
+			fileR.close();
+			fileW.close();
+		}catch(IOException e) {
+			System.out.println(e);
+		}
+		
+		
+		System.out.println("Oggi : ");
+		System.out.println("La temperatura minima è : "+temp.get("temp_min")+"C°");
+		System.out.println("La temperatura massima è : "+temp.get("temp_max")+"C°");
 		return city;
 	}
+	
 }

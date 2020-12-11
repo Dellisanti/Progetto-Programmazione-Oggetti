@@ -9,8 +9,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.SimpleDateFormat;
-//import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -44,7 +42,6 @@ public class ParseJsonClass {
 	
 	public City Parse(String data, City city, String paese) {
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		JSONObject obj = null;
 		try {
 			obj = (JSONObject)JSONValue.parseWithException(data);
@@ -53,14 +50,18 @@ public class ParseJsonClass {
 		}
 		JSONObject SRiseSSet= (JSONObject) obj.get("sys");
 		JSONObject temp = (JSONObject) obj.get("main");
-		//JSONArray Jarray = (JSONArray) obj.get("weather");
 		city.setName(paese);
 		long sunrise = (Long)SRiseSSet.get("sunrise");
-		String SunRise = sdf.format(new java.util.Date(sunrise*1000));
-		city.setSunrise(SunRise);
+		city.setSunrise(sunrise);
 		long sunset = (Long)SRiseSSet.get("sunset");
-		String SunSet = sdf.format(new java.util.Date(sunset*1000));
-		city.setSunset(SunSet);
+		city.setSunset(sunset);
+		System.out.println("Oggi : ");
+		System.out.println("La temperatura minima è : "+temp.get("temp_min")+"C°");
+		System.out.println("La temperatura massima è : "+temp.get("temp_max")+"C°");
+		return city;
+	}
+	
+	public void Save(City city) {
 		
 		String next;
 		try {
@@ -69,20 +70,13 @@ public class ParseJsonClass {
 			do {
 				next=fileR.readLine();
 				if(next==null)
-					fileW.write(SunRise+" , "+SunSet+"\n");
+					fileW.write(city.getSunrise()+","+city.getSunset()+"\n");
 			}while(next!=null);
 			fileR.close();
 			fileW.close(); 
 		}catch(IOException e) {
 			System.out.println(e);
 		}
-		
-		
-		
-		System.out.println("Oggi : ");
-		System.out.println("La temperatura minima Ã¨ : "+temp.get("temp_min")+"CÂ°");
-		System.out.println("La temperatura massima Ã¨ : "+temp.get("temp_max")+"CÂ°");
-		return city;
 	}
 	
 }

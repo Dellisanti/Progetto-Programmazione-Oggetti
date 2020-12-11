@@ -1,29 +1,17 @@
 package Project.model;
-//import java.util.Vector;
+import java.text.SimpleDateFormat;
 
-public class City {
+public class City implements Orari{
 	private String name;
 	private String DescriptionTemp;
-	private String sunrise;
-	private String sunset;
+	private long sunrise;
+	private long sunset;
 	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getSunrise() {
-		return sunrise;
-	}
-	public void setSunrise(String sunrise) {
-		this.sunrise = sunrise;
-	}
-	public String getSunset() {
-		return sunset;
-	}
-	public void setSunset(String sunset) {
-		this.sunset = sunset;
 	}
 	public String getDescriptionTemp() {
 		return DescriptionTemp;
@@ -32,15 +20,25 @@ public class City {
 		DescriptionTemp = descriptionTemp;
 	}
 	
-	public void CityViewToday(City city) {
-			System.out.println("L'orario dell'alba Ã¨ : "+city.getSunrise());
-			System.out.println("L'orario del tramonto Ã¨ : "+city.getSunset());
+	public long getSunrise() {
+		return sunrise;
+	}
+	public void setSunrise(long sunrise) {
+		this.sunrise = sunrise;
+	}
+	public long getSunset() {
+		return sunset;
+	}
+	public void setSunset(long sunset) {
+		this.sunset = sunset;
 	}
 	
-	/*public void save(City c, Vector<City> cityArray) {
-		if(!cityArray.contains(c.getSunrise()))
-			if(!cityArray.contains(c.getSunset()))
-				cityArray.add(c);
-	}*/
+	public void CityViewToday() {
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		String SunRise = sdf.format(new java.util.Date(getSunrise()*1000));
+		String SunSet = sdf.format(new java.util.Date(getSunset()*1000));
+		System.out.println("L'orario dell'alba è : "+SunRise);
+		System.out.println("L'orario del tramonto è : "+SunSet);
+	}
 	
 }

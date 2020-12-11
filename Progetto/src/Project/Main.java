@@ -1,7 +1,10 @@
 package Project;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
-//import java.util.Vector;
+import java.util.Vector;
 
 import Project.model.*;
 import Project.service.*;
@@ -12,56 +15,59 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		//Vector<City> cityArray = new Vector<City>();
 		City city = new City();
+		
+		Vector<Orari> orariCity = new Vector<Orari>();
+		
 		ParseJsonClass parse = new ParseJsonClass();
 		
-		final String ApiKey="";
+		final String ApiKey="7d93f19f21077353e39f87032051beae";
 		
-		//do {
-			System.out.print("Inserisci il paese : ");
-			String paese=input.nextLine();
-			String url = "https://api.openweathermap.org/data/2.5/weather?q="+paese+"&units=metric&appid="+ApiKey;
-			String data = parse.ApiData(url);
-		    City c = parse.Parse(data, city, paese);
-			city.CityViewToday(c);
-			//city.save(c,cityArray);
-			/*char scelta = input.next().charAt(0);
-			if(scelta=='n')
-				setOk(false);*/
-		//}while(ok==true);
-			
-		int scelta;				
-		do {
-			System.out.println("Menu:");
-			System.out.println("1 per vedere le statistiche degli ultimi 5 giorni");
-			System.out.println("2 per vedere le statistiche degli ultimi 10 giorni");
-			System.out.println("3 per vedere le statistiche degli ultimi 15 giorni");
-			System.out.println("4 per vedere le statistiche degli ultimi 30 giorni");
-			System.out.println("5 per scegliere il periodo delle statistiche");
-			System.out.println("0 per uscire");
-			scelta = input.nextInt();			
-			switch (scelta){
-			case 1:
-				Filtri(5);
-				break;		
-			case 2:
-		
-				break;
-			case 3:
-			
-				break;
-			case 4:
-			
-				break;
-			case 5:
-				
-				break;
-			default:
-				System.out.println("Scegli solo i valori corretti");
-				break;				
+		System.out.print("Inserisci il paese : ");
+		String paese=input.nextLine();
+		String url = "https://api.openweathermap.org/data/2.5/weather?q="+paese+"&units=metric&appid="+ApiKey;
+		String data = parse.ApiData(url);
+	    City c = parse.Parse(data, city, paese);
+	    city.CityViewToday();
+		parse.Save(c);
+		readFile(orariCity, city);
+	}
+	
+	public static void readFile(Vector<Orari> orariArray, City city) {
+		String next;
+		int i=0;
+		try {
+			BufferedReader fileR = new BufferedReader(new FileReader("Ancona.txt"));
+			do {
+				next=fileR.readLine();
+				if(next!=null) {
+					String[] s = next.split(",");
+					if(orariArray.isEmpty()) {
+						city.setSunrise(Long.valueOf(s[0]));
+						city.setSunset(Long.valueOf(s[1]));
+						orariArray.add(city);
+					} else {
+						if(orariArray.get(i).getSunrise()==Long.valueOf(s[0]) && orariArray.get(i).getSunset()==Long.valueOf(s[1])) {
+							city.setSunrise(0);
+							city.setSunset(0);
+							orariArray.add(city);
+						}
+					}
+				}
+			}while(next!=null);
+			fileR.close();
+		}catch(IOException e) {
+			System.out.println("File non trovato");
+			System.out.println(e);
+		}
+		for(i=0;i<orariArray.size();i++) {
+			if(orariArray.get(i)!=null) {
+				System.out.println("Alba: "+orariArray.get(i).getSunrise());
+				System.out.println("Tramonto: "+orariArray.get(i).getSunset());
+			} else {
+				System.out.println("null");
 			}
-		}while(scelta != 0);
+		}
 	}
 	
 }

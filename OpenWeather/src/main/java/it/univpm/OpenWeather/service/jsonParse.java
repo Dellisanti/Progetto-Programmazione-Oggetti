@@ -9,6 +9,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Vector;
+
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -55,13 +57,6 @@ public class jsonParse {
 		city.setSunrise(sunrise);
 		long sunset = (Long)SRiseSSet.get("sunset");
 		city.setSunset(sunset);
-		double tempMax = (double)temp.get("temp_max");
-
-		double tempMin = (double)temp.get("temp_min");
-		
-		System.out.println("Oggi : ");
-		System.out.println("La temperatura minima è : "+temp.get("temp_min")+"C°");
-		System.out.println("La temperatura massima è : "+temp.get("temp_max")+"C°");
 		return city;
 	}
 	
@@ -80,6 +75,49 @@ public class jsonParse {
 			fileW.close(); 
 		}catch(IOException e) {
 			System.out.println(e);
+		}
+	}
+	
+	public void readFile(Vector<Orari> orariArray, City city) {
+		String next;
+		int i=0;
+		try {
+			BufferedReader fileR = new BufferedReader(new FileReader("Ancona.txt"));
+			do {
+				next=fileR.readLine();
+				if(next!=null) {
+					String[] s = next.split(",");
+					city = new City();
+					if(orariArray.isEmpty()) {
+						city.setSunrise(Long.valueOf(s[0]));
+						city.setSunset(Long.valueOf(s[1]));
+						orariArray.add(city);
+					} else {
+						if(orariArray.get(i).getSunrise()==Long.valueOf(s[0]) && orariArray.get(i).getSunset()==Long.valueOf(s[1])) {
+							city.setSunrise(0);
+							city.setSunset(0);
+							orariArray.add(city);
+						} else {
+							city.setSunrise(Long.valueOf(s[0]));
+							city.setSunset(Long.valueOf(s[1]));
+							orariArray.add(city);
+							i=orariArray.indexOf(city);
+						}
+					}
+				}
+			}while(next!=null);
+			fileR.close();
+		}catch(IOException e) {
+			System.out.println("File non trovato");
+			System.out.println(e);
+		}
+		for(i=0;i<orariArray.size();i++) {
+			if(orariArray.get(i)!=null) {
+				System.out.println("Alba: "+orariArray.get(i).getSunrise());
+				System.out.println("Tramonto: "+orariArray.get(i).getSunset());
+			} else {
+				System.out.println("null");
+			}
 		}
 	}
 	

@@ -40,6 +40,7 @@ public class Main {
 				next=fileR.readLine();
 				if(next!=null) {
 					String[] s = next.split(",");
+					city = new City();
 					if(orariArray.isEmpty()) {
 						city.setSunrise(Long.valueOf(s[0]));
 						city.setSunset(Long.valueOf(s[1]));
@@ -49,6 +50,11 @@ public class Main {
 							city.setSunrise(0);
 							city.setSunset(0);
 							orariArray.add(city);
+						} else {
+							city.setSunrise(Long.valueOf(s[0]));
+							city.setSunset(Long.valueOf(s[1]));
+							orariArray.add(city);
+							i=orariArray.indexOf(city);
 						}
 					}
 				}

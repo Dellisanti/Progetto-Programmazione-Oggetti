@@ -40,5 +40,5 @@ public class City implements Orari{
 		System.out.println("L'orario dell'alba è : "+SunRise);
 		System.out.println("L'orario del tramonto è : "+SunSet);
 	}
-	
+
 }

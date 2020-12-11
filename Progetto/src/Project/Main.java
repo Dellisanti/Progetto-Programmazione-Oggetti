@@ -1,12 +1,7 @@
 package Project;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
-import java.util.Vector;
+//import java.util.Vector;
 
 import Project.model.*;
 import Project.service.*;
@@ -14,15 +9,14 @@ import Project.service.*;
 public class Main {
 	
 	public static Scanner input = new Scanner(System.in);
-	private static boolean ok=true;
 	
 	public static void main(String[] args) {
 		
-		Vector<City> cityArray = new Vector<City>();
+		//Vector<City> cityArray = new Vector<City>();
 		City city = new City();
 		ParseJsonClass parse = new ParseJsonClass();
 		
-		final String ApiKey="7d93f19f21077353e39f87032051beae";
+		final String ApiKey="";
 		
 		//do {
 			System.out.print("Inserisci il paese : ");
@@ -36,23 +30,38 @@ public class Main {
 			if(scelta=='n')
 				setOk(false);*/
 		//}while(ok==true);
-	}
-
-	public static boolean setOk(boolean ok) {
-		Main.ok = ok;
-		return ok;
-	}
-	
-	/*public static void readFile(Vector<City> cityArray) {
-		String next;
-		try {
-			BufferedReader fileR = new BufferedReader(new FileReader("OrariAlbaTramonto"));
-			BufferedWriter fileW = new BufferedWriter(new FileWriter("OrariAlbaTramonto"));
 			
-		}catch(IOException e) {
-			System.out.println("File nonn trovato");
-			System.out.println(e);
-		}
-	}*/
+		int scelta;				
+		do {
+			System.out.println("Menu:");
+			System.out.println("1 per vedere le statistiche degli ultimi 5 giorni");
+			System.out.println("2 per vedere le statistiche degli ultimi 10 giorni");
+			System.out.println("3 per vedere le statistiche degli ultimi 15 giorni");
+			System.out.println("4 per vedere le statistiche degli ultimi 30 giorni");
+			System.out.println("5 per scegliere il periodo delle statistiche");
+			System.out.println("0 per uscire");
+			scelta = input.nextInt();			
+			switch (scelta){
+			case 1:
+				Filtri(5);
+				break;		
+			case 2:
+		
+				break;
+			case 3:
+			
+				break;
+			case 4:
+			
+				break;
+			case 5:
+				
+				break;
+			default:
+				System.out.println("Scegli solo i valori corretti");
+				break;				
+			}
+		}while(scelta != 0);
+	}
 	
 }

@@ -1,5 +1,5 @@
 package Project.model;
-import java.util.Vector;
+//import java.util.Vector;
 
 public class City {
 	private String name;
@@ -33,8 +33,8 @@ public class City {
 	}
 	
 	public void CityViewToday(City city) {
-			System.out.println("L'orario dell'alba è : "+city.getSunrise());
-			System.out.println("L'orario del tramonto è : "+city.getSunset());
+			System.out.println("L'orario dell'alba Ã¨ : "+city.getSunrise());
+			System.out.println("L'orario del tramonto Ã¨ : "+city.getSunset());
 	}
 	
 	/*public void save(City c, Vector<City> cityArray) {

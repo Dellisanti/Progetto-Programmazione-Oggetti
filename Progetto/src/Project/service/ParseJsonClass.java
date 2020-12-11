@@ -44,7 +44,7 @@ public class ParseJsonClass {
 	
 	public City Parse(String data, City city, String paese) {
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		JSONObject obj = null;
 		try {
 			obj = (JSONObject)JSONValue.parseWithException(data);
@@ -64,23 +64,24 @@ public class ParseJsonClass {
 		
 		String next;
 		try {
-			fileR = new BufferedReader(new FileReader("OrariAlbaTramonto.txt"));
-			fileW = new BufferedWriter(new FileWriter("OrariAlbaTramonto.txt"));
+			fileR = new BufferedReader(new FileReader("Ancona.txt"));
+			fileW = new BufferedWriter(new FileWriter("Ancona.txt", true));
 			do {
 				next=fileR.readLine();
-				if(next!=null)
-					fileW.write(SunRise+" , "+SunSet);
+				if(next==null)
+					fileW.write(SunRise+" , "+SunSet+"\n");
 			}while(next!=null);
 			fileR.close();
-			fileW.close();
+			fileW.close(); 
 		}catch(IOException e) {
 			System.out.println(e);
 		}
 		
 		
+		
 		System.out.println("Oggi : ");
-		System.out.println("La temperatura minima è : "+temp.get("temp_min")+"C°");
-		System.out.println("La temperatura massima è : "+temp.get("temp_max")+"C°");
+		System.out.println("La temperatura minima Ã¨ : "+temp.get("temp_min")+"CÂ°");
+		System.out.println("La temperatura massima Ã¨ : "+temp.get("temp_max")+"CÂ°");
 		return city;
 	}
 	

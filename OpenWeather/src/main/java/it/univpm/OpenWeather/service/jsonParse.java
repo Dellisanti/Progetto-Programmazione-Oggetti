@@ -55,6 +55,10 @@ public class jsonParse {
 		city.setSunrise(sunrise);
 		long sunset = (Long)SRiseSSet.get("sunset");
 		city.setSunset(sunset);
+		double tempMax = (double)temp.get("temp_max");
+
+		double tempMin = (double)temp.get("temp_min");
+		
 		System.out.println("Oggi : ");
 		System.out.println("La temperatura minima è : "+temp.get("temp_min")+"C°");
 		System.out.println("La temperatura massima è : "+temp.get("temp_max")+"C°");

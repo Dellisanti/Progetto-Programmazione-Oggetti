@@ -13,6 +13,8 @@ import it.univpm.OpenWeather.model.Orari;
 
 public class StatsAndFilters {
 	
+	City c;
+	
 	public Vector<Orari> ShowFilters(Vector<Orari> orari, City city, String paese, int periodo) {
 		orari = new Vector<Orari>();
 		String next;
@@ -50,11 +52,16 @@ public class StatsAndFilters {
 				next=fileR.readLine();
 				if(next!=null) {
 					String[] s = next.split(",");
-					city = new City();
-					city.setName(paese);
-					city.setSunrise(Long.valueOf(s[0]));
-					city.setSunset(Long.valueOf(s[1]));
-					orari.add(city);
+					if(i==0) {
+						c = new City();
+						c.setSunrise(Long.valueOf(s[0]));
+						c.setSunset(Long.valueOf(s[1]));
+					}
+					if(i==periodo-1) {
+						city = new City();
+						city.setSunrise(Long.valueOf(s[0]));
+						city.setSunset(Long.valueOf(s[1]));
+					}
 				}
 				else {
 					fileR.close();
@@ -66,7 +73,9 @@ public class StatsAndFilters {
 			System.out.println("File non trovato");
 			System.out.println(e);
 		}
-		return null;
+		long sunrise = city.getSunrise()-c.getSunrise();
+		long sunset = city.getSunset()-c.getSunset();
+		return "Negli ultimi "+periodo+" giorni : \n"+"L'alba cambia di "+sunrise/1000+" sec\nIl tramonto cambia di "+sunset/1000+" sec";
 	}
 	
 }

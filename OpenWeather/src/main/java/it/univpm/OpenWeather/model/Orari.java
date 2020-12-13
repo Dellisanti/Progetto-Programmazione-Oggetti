@@ -7,5 +7,4 @@ public interface Orari {
 	public long getSunset();
 	public void setSunset(long sunset);
 	
-	public abstract void CityViewToday();
 }

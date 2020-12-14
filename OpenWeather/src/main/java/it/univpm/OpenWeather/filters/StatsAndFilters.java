@@ -11,6 +11,12 @@ import org.springframework.web.server.ResponseStatusException;
 import it.univpm.OpenWeather.model.City;
 import it.univpm.OpenWeather.model.Orari;
 
+/**
+ * Classe che implementa il filtraggio dei dati dello storico in base al periodo richiesto dall'utente.
+ * @author De Ritis Riccardo
+ * @author francesco Dellisanti
+ */
+
 public class StatsAndFilters {
 	
 	City c;

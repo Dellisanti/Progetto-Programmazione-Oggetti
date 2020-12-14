@@ -1,5 +1,11 @@
 package it.univpm.OpenWeather.model;
 
+/**
+ * Classe che modella i dati del Paese.
+ * @author De Ritis Riccardo
+ * @author francesco Dellisanti
+ */
+
 public class City implements Orari{
 	private String name;
 	private long sunrise;

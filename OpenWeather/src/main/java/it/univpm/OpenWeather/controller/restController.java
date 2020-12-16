@@ -1,12 +1,13 @@
 package it.univpm.OpenWeather.controller;
 
 import java.util.Vector;
+
+import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import it.univpm.OpenWeather.filters.StatsAndFilters;
 import it.univpm.OpenWeather.model.City;
-import it.univpm.OpenWeather.model.Orari;
 import it.univpm.OpenWeather.service.jsonParse;
 
 /**
@@ -17,7 +18,6 @@ import it.univpm.OpenWeather.service.jsonParse;
 
 @RestController
 public class restController {
-	
 	/**
 	 * Stringa statica che contiene l'ApiKey per la chiamate della API di OpenWeather.
 	 * 
@@ -27,7 +27,7 @@ public class restController {
 	jsonParse parse = new jsonParse();
 	City city = new City();
 	StatsAndFilters SF = new StatsAndFilters();
-	Vector<Orari> orariArray;
+	Vector<City> orariArray;
 	
 	/**
 	 * Rotta di tipo GET che ricava i dati di orario per alba e tramonto 
@@ -50,10 +50,11 @@ public class restController {
 	 * @param paese Tipo parametro che dichiara di quale paese si intende conoscere i dati.
 	 * @param periodo Tipo parametro che dichiara di quale periodo si intende filtrare lo storico.
 	 * @return Ritornano i dati filtrati dallo storico per il periodo indicato
+	 * @throws ParseException 
 	 */
 	
 	@GetMapping(value="/città/filters/{paese}/{periodo}")
-	public ResponseEntity<Object> VediStorico(@PathVariable("paese") String paese, @PathVariable("periodo") int periodo){
+	public ResponseEntity<Object> VediStorico(@PathVariable("paese") String paese, @PathVariable("periodo") int periodo) throws ParseException{
 		return new ResponseEntity<>(SF.ShowFilters(orariArray, city, paese, periodo),HttpStatus.OK);
 	}
 	
@@ -62,11 +63,12 @@ public class restController {
 	 * @param paese Tipo parametro che dichiara di quale paese si intende conoscere i dati.
 	 * @param periodo Tipo parametro che dichiara di quale periodo si intende fare statistiche.
 	 * @return Ritornano le statistiche in base al periodo richiesto.
+	 * @throws ParseException 
 	 */
 	
 	@GetMapping(value="/città/stats/{paese}/{periodo}")
-	public ResponseEntity<Object> VediStats(@PathVariable("paese") String paese, @PathVariable("periodo") int periodo){
-		return new ResponseEntity<>(SF.ShowStats(orariArray, city, paese, periodo),HttpStatus.OK);
+	public ResponseEntity<Object> VediStats(@PathVariable("paese") String paese, @PathVariable("periodo") int periodo) throws ParseException{
+		return new ResponseEntity<>(SF.ShowStats(city, periodo),HttpStatus.OK);
 	}
 	
 }

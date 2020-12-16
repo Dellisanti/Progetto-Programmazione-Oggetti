@@ -5,9 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Vector;
 
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
-
 import it.univpm.OpenWeather.model.City;
 import it.univpm.OpenWeather.model.Orari;
 
@@ -19,69 +21,60 @@ import it.univpm.OpenWeather.model.Orari;
 
 public class StatsAndFilters {
 	
-	City c;
-	
-	public Vector<Orari> ShowFilters(Vector<Orari> orari, City city, String paese, int periodo) {
-		orari = new Vector<Orari>();
-		String next;
+	public Vector<City> ShowFilters(Vector<City> orari, City city, String paese, int periodo) throws ParseException {
+		JSONObject obj = new JSONObject();
+		orari = new Vector<City>();
 		try {
 			BufferedReader fileR = new BufferedReader(new FileReader("Ancona.txt"));
 			for(int i=0;i<periodo;i++) {
-				next=fileR.readLine();
+				String next = fileR.readLine();
 				if(next!=null) {
-					String[] s = next.split(",");
-					city = new City();
-					city.setName(paese);
-					city.setSunrise(Long.valueOf(s[0]));
-					city.setSunset(Long.valueOf(s[1]));
+					obj = (JSONObject)JSONValue.parseWithException(next);
+					JSONObject SRiseSSet = (JSONObject) obj.get("data");
+					city.setName((String)SRiseSSet.get("name"));
+					city.setSunrise((long)SRiseSSet.get("sunrise"));
+					city.setSunset((long)SRiseSSet.get("sunset"));
 					orari.add(city);
 				}
-				else {
-					fileR.close();
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Attenzione!.. periodo troppo lungo..");
-				}
+				else
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Periodo troppo lungo...");
 			}
-			fileR.close();
 		}catch(IOException e) {
-			System.out.println("File non trovato");
-			System.out.println(e);
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"File non trovato");
 		}
 		return orari;
 	}
 	
-	public String ShowStats(Vector<Orari> orari, City city, String paese, int periodo) {
-		orari = new Vector<Orari>();
-		String next;
+	public City ShowStats(City stat, int periodo) throws ParseException {
+		JSONObject obj = new JSONObject();
+		long sunrise = 0, sunrise1 = 0, sunset = 0, sunset1 = 0;
 		try {
 			BufferedReader fileR = new BufferedReader(new FileReader("Ancona.txt"));
 			for(int i=0;i<periodo;i++) {
-				next=fileR.readLine();
+				String next = fileR.readLine();
 				if(next!=null) {
-					String[] s = next.split(",");
+					obj = (JSONObject)JSONValue.parseWithException(next);
+					JSONObject SRiseSSet = (JSONObject) obj.get("data");
 					if(i==0) {
-						c = new City();
-						c.setSunrise(Long.valueOf(s[0]));
-						c.setSunset(Long.valueOf(s[1]));
+						String name = (String)SRiseSSet.get("name");
+						sunrise = (long)SRiseSSet.get("sunrise");
+						sunset  = (long)SRiseSSet.get("sunset");
 					}
 					if(i==periodo-1) {
-						city = new City();
-						city.setSunrise(Long.valueOf(s[0]));
-						city.setSunset(Long.valueOf(s[1]));
+						sunrise1 = (long)SRiseSSet.get("sunrise");
+						sunset1  = (long)SRiseSSet.get("sunset");
 					}
 				}
-				else {
-					fileR.close();
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Periodo troppo lungo..");
-				}
+				else
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Periodo troppo lungo...");
 			}
-			fileR.close();
+			stat.setName("Differenze in secondi di "+periodo+" giorni");
+			stat.setSunrise((sunrise1-sunrise)/1000);
+			stat.setSunset((sunset1-sunset)/1000);
 		}catch(IOException e) {
-			System.out.println("File non trovato");
-			System.out.println(e);
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"File non trovato");
 		}
-		long sunrise = city.getSunrise()-c.getSunrise();
-		long sunset = city.getSunset()-c.getSunset();
-		return "Negli ultimi "+periodo+" giorni : \n"+"L'alba cambia di "+sunrise/1000+" sec\nIl tramonto cambia di "+sunset/1000+" sec";
+		return stat;
 	}
 	
 }

@@ -35,7 +35,7 @@ Get | localhost:8080/archive?città/{period} |
 Fornisce all'utente lo storico dei dati di alba e tramonto della città indicata
 L'utente dovrà sostituire **{period}** con:
 
-	* il valore numerico del periodo dello storico che si vuole visualizzare
+  * il valore numerico del periodo dello storico che si vuole visualizzare
 
 3.
 Tipo | Path |
@@ -45,13 +45,13 @@ Get | localhost:8080/stats/{type}/{period} |
 Fornisce all'utente statistiche riguardanti la variazione d'orario di alba e tramonto relative alla città cercata.
 L'utente dovrà sostituire **{type}** con:
 
-	* sunrise -> per conoscere le statistiche dell'alba
-	* Sunset -> per conoscere le statistiche del tramonto
-	* all -> per conoscere le statistiche sia di alba che tramonto 
+  * sunrise -> per conoscere le statistiche dell'alba
+  * Sunset -> per conoscere le statistiche del tramonto
+  * all -> per conoscere le statistiche sia di alba che tramonto 
 	
 L'utente dovrà sostituire **{period}** con:
 
-	* il valore numerico del periodo dello storico che si vuole visualizzare
+  * il valore numerico del periodo dello storico che si vuole visualizzare
 	
 ## UML
 * Casi d'uso:

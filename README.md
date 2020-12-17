@@ -38,8 +38,13 @@ L'utente dovrà sostituire {period} con:
 	il valore numerico del periodo dello storico che si vuole visualizzare
 	
 # UML
-	Casi d'uso	
+Casi d'uso:
 ![Untitled Document](https://user-images.githubusercontent.com/71764245/102491213-2c60fa80-4070-11eb-9526-e58bf63e034a.jpg)
+
+Classi:
+
+
+Sequenze:
 
 
 # Possibile implementazione del progetto:

@@ -37,11 +37,9 @@ L'utente dovrà sostituire {period} con:
 	il valore numerico del periodo dello storico che si vuole visualizzare
 	
 # UML
-	Casi d'uso
-	
-	Classi
-	
-	Sequenze
+	Casi d'uso	
+![Untitled Document](https://user-images.githubusercontent.com/71764245/102491213-2c60fa80-4070-11eb-9526-e58bf63e034a.jpg)
+
 
 # Possibile implementazione del progetto:
 Un possibile caso di utilizzo della nostra applicazione potrebbe essere l'utilizzo urbano che prevede l'accensione e lo spegnimento dell'illuminazione pubblica in base a orario di alba e tramonto. Così da rendere automatico e più efficiente l'illuminazione pubblica ed evitando sprechi corrente.

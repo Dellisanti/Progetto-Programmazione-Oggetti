@@ -1,11 +1,6 @@
 # Sunrise and Sunset(Spring boot rest API OpenWeather)
 Repository creata per prova d'esame gennaio 2021 per il corso di programmazione ad oggetti.
 
-## Autori
-Dellisanti Francesco
-
-De Ritis Riccardo
-
 ## Applicazione
 L'applicazione utilizza l'API Current Weather Data di OpenWeather per accedere ai dati di alba e tramonto di una certa città.
 I dati vengono poi salvati per creare uno storico. Su di esso vengono fatte delle analisi riguardati la variazione di orario di alba e tramonto della città scelta dall'utente.
@@ -55,17 +50,21 @@ L'utente dovrà sostituire **{period}** con:
 	
 ## UML
 * Casi d'uso:
-![Untitled Document](https://user-images.githubusercontent.com/71764245/102491213-2c60fa80-4070-11eb-9526-e58bf63e034a.jpg)
+![Untitled Document](https://user-images.githubusercontent.com/71764245/102500681-dd6d9200-407c-11eb-9096-57e0271d8aaa.png)
 
 * Classi:
-
+da caricare
 
 * Sequenze:
+da caricare
 
-
-# Possibile implementazione del progetto:
+## Possibile implementazione del progetto:
 Un possibile caso di utilizzo della nostra applicazione potrebbe essere l'utilizzo urbano che prevede l'accensione e lo spegnimento dell'illuminazione pubblica in base a orario di alba e tramonto. Così da rendere automatico e più efficiente l'illuminazione pubblica ed evitando sprechi corrente.
 
+## Autori
+Dellisanti Francesco
+
+De Ritis Riccardo
 
 
 

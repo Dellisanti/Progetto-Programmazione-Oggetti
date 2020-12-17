@@ -3,6 +3,7 @@ Repository creata per prova d'esame gennaio 2021 per il corso di programmazione 
 
 # Autori
 Dellisanti Francesco
+
 De Ritis Riccardo
 
 L'applicazione utilizza l'API Current Weather Data di OpenWeather per accedere ai dati di alba e tramonto di una certa città.

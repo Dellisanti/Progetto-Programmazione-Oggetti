@@ -8,7 +8,7 @@ De Ritis Riccardo
 L'applicazione utilizza l'API Current Weather Data di OpenWeather per accedere ai dati di alba e tramonto di una certa città.
 I dati vengono poi salvati per creare uno storico. Su di esso vengono fatte delle analisi riguardati la variazione di orario di alba e tramonto della città scelta dall'utente.
 
-#Rotte Applicazione
+# Rotte applicazione
 
 Keys:
 Città = città scelta dall'utente
@@ -35,8 +35,15 @@ L'utente dovrà sostituire {tipe} con:
 	all -> per conoscere le statistiche sia di alba che tramonto 
 L'utente dovrà sostituire {period} con:
 	il valore numerico del periodo dello storico che si vuole visualizzare
+	
+# UML
+	Casi d'uso
+	
+	Classi
+	
+	Sequenze
 
-#Possibile implementazione del progetto:
+# Possibile implementazione del progetto:
 Un possibile caso di utilizzo della nostra applicazione potrebbe essere l'utilizzo urbano che prevede l'accensione e lo spegnimento dell'illuminazione pubblica in base a orario di alba e tramonto. Così da rendere automatico e più efficiente l'illuminazione pubblica ed evitando sprechi corrente.
 
 

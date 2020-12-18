@@ -4,12 +4,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;
+
 import it.univpm.OpenWeather.model.City;
 import it.univpm.OpenWeather.model.Orari;
 import it.univpm.OpenWeather.model.RequestBodyClass;
 import it.univpm.OpenWeather.service.Archive;
 import it.univpm.OpenWeather.service.Utils;
 
+@Service
 public class Statistics {
 	
 	SimpleDateFormat sdf = new SimpleDateFormat();

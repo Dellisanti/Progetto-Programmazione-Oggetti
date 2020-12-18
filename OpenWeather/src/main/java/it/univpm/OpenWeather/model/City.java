@@ -1,11 +1,14 @@
 package it.univpm.OpenWeather.model;
 
+import org.springframework.stereotype.Service;
+
 /**
  * Classe che modella i dati del Paese.
  * @author De Ritis Riccardo
  * @author francesco Dellisanti
  */
 
+@Service
 public class City implements Orari{
 	private String name;
 	private String sunrise;

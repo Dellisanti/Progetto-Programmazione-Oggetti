@@ -1,6 +1,7 @@
 package it.univpm.OpenWeather.controller;
 
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +21,16 @@ import it.univpm.OpenWeather.statistics.Statistics;
 @RestController
 public class restController {
 	
-	Parse parse = new Parse();
-	Utils util = new Utils();
-	City city = new City();
-	Filters filters = new Filters();
-	Statistics stats = new Statistics();
+	@Autowired
+	Parse parse;
+	@Autowired
+	Utils util;
+	@Autowired
+	City city;
+	@Autowired
+	Filters filters;
+	@Autowired
+	Statistics stats;
 	
 	/**
 	 * Rotta di tipo GET che ricava i dati di orario per alba e tramonto 

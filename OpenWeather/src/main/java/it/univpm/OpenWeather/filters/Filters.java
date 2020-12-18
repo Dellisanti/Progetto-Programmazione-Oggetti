@@ -3,6 +3,7 @@ package it.univpm.OpenWeather.filters;
 import java.util.Vector;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import it.univpm.OpenWeather.model.Orari;
 import it.univpm.OpenWeather.model.RequestBodyClass;
@@ -14,6 +15,7 @@ import it.univpm.OpenWeather.service.Archive;
  * @author francesco Dellisanti
  */
 
+@Service
 public class Filters {
 	
 	public Vector<Orari> ShowFilters(RequestBodyClass body) throws ParseException {

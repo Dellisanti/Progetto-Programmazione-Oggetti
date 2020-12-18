@@ -12,14 +12,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import it.univpm.OpenWeather.model.City;
+import it.univpm.OpenWeather.model.Orari;
 import it.univpm.OpenWeather.model.RequestBodyClass;
 
-public class Archivie {
+public class Archive {
 
-	public Vector<City> setArchivie(RequestBodyClass body) throws ParseException {
+	public Vector<Orari> setArchivie(RequestBodyClass body) throws ParseException {
 		JSONObject obj = new JSONObject();
-		Vector<City> orari = new Vector<City>();
-		int i=0;
+		Vector<Orari> orari = new Vector<Orari>();
 		try {
 			String next;
 			BufferedReader fileR = new BufferedReader(new FileReader("Ancona.txt"));
@@ -32,7 +32,7 @@ public class Archivie {
 						c.setName(body.getName());
 						c.setSunrise((String)obj.get("sunrise"));
 						c.setSunset((String)obj.get("sunset"));
-						orari.add(i,c); i++;
+						orari.add(c);
 					}
 				} else if(orari.isEmpty()) {
 					fileR.close();

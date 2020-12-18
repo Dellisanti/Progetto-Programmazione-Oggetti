@@ -56,6 +56,11 @@ public class restController {
 		return new ResponseEntity<>(filters.ShowFilters(body),HttpStatus.OK);
 	}
 	
+	@PostMapping(value="/historyAll")
+	public ResponseEntity<Object> ShowAllHistory(@RequestBody RequestBodyClass body) throws ParseException{
+		return new ResponseEntity<>(filters.ShowAllFilters(body),HttpStatus.OK);
+	}
+	
 	/**
 	 * Rotta di tipo GET che effettua le statistiche dei dati in base al periodo scelto dall'utente.
 	 * @param paese Tipo parametro che dichiara di quale paese si intende conoscere i dati.
@@ -64,9 +69,9 @@ public class restController {
 	 * @throws ParseException 
 	 */
 	
-	/*@GetMapping(value="/stats")
+	@PostMapping(value="/stats")
 	public ResponseEntity<Object> ShowStatistics(@RequestBody RequestBodyClass body) throws ParseException{
 		return new ResponseEntity<>(stats.ShowStats(body),HttpStatus.OK);
-	}*/
+	}
 	
 }

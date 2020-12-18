@@ -21,9 +21,8 @@ public class Utils {
 			InputStream in = openConnection.getInputStream();
 			try {
 				BufferedReader buf = new BufferedReader(new InputStreamReader(in));
-				while((line=buf.readLine())!=null) {
+				while((line=buf.readLine())!=null)
 					data+=line;
-				}
 			}finally {
 				in.close();
 			}

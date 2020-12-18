@@ -1,14 +1,15 @@
 package it.univpm.OpenWeather.controller;
 
-import java.util.Vector;
-
 import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import it.univpm.OpenWeather.filters.StatsAndFilters;
+import it.univpm.OpenWeather.filters.Filters;
 import it.univpm.OpenWeather.model.City;
-import it.univpm.OpenWeather.service.jsonParse;
+import it.univpm.OpenWeather.model.RequestBodyClass;
+import it.univpm.OpenWeather.service.Parse;
+import it.univpm.OpenWeather.service.Utils;
+import it.univpm.OpenWeather.statistics.Statistics;
 
 /**
  * Rappresenta la classe che gestisce tutte le chiamate al server
@@ -18,16 +19,12 @@ import it.univpm.OpenWeather.service.jsonParse;
 
 @RestController
 public class restController {
-	/**
-	 * Stringa statica che contiene l'ApiKey per la chiamate della API di OpenWeather.
-	 * 
-	 */
 	
-	final String ApiKey="7d93f19f21077353e39f87032051beae";
-	jsonParse parse = new jsonParse();
+	Parse parse = new Parse();
+	Utils util = new Utils();
 	City city = new City();
-	StatsAndFilters SF = new StatsAndFilters();
-	Vector<City> orariArray;
+	Filters filters = new Filters();
+	Statistics stats = new Statistics();
 	
 	/**
 	 * Rotta di tipo GET che ricava i dati di orario per alba e tramonto 
@@ -36,11 +33,12 @@ public class restController {
 	 * @return Ritornano i dati di alba e tramonto del paese scelto dall'utente.
 	 */
 	
-	@GetMapping(value="/città/{paese}")
+	@GetMapping(value="/weather/{paese}")
 	public ResponseEntity<Object> VediCittà(@PathVariable("paese") String paese) {
-		String url = "https://api.openweathermap.org/data/2.5/weather?q="+paese+"&units=metric&appid="+ApiKey;
-		String data = parse.ApiData(url);
-	    City c = parse.Parse(data, city, paese);
+		String ApiKey = util.readApiKey();
+		String url = "https://api.openweathermap.org/data/2.5/weather?q="+paese+"&appid="+ApiKey;
+		String data = util.ApiData(url);
+	    City c = parse.Parsing(data, city, paese);
 		parse.Save(c);
 		return new ResponseEntity<>(c, HttpStatus.OK);
 	}
@@ -53,9 +51,9 @@ public class restController {
 	 * @throws ParseException 
 	 */
 	
-	@GetMapping(value="/città/filters/{paese}/{periodo}")
-	public ResponseEntity<Object> VediStorico(@PathVariable("paese") String paese, @PathVariable("periodo") int periodo) throws ParseException{
-		return new ResponseEntity<>(SF.ShowFilters(orariArray, city, paese, periodo),HttpStatus.OK);
+	@PostMapping(value="/history")
+	public ResponseEntity<Object> ShowHistory(@RequestBody RequestBodyClass body) throws ParseException{
+		return new ResponseEntity<>(filters.ShowFilters(body),HttpStatus.OK);
 	}
 	
 	/**
@@ -66,9 +64,9 @@ public class restController {
 	 * @throws ParseException 
 	 */
 	
-	@GetMapping(value="/città/stats/{paese}/{periodo}")
-	public ResponseEntity<Object> VediStats(@PathVariable("paese") String paese, @PathVariable("periodo") int periodo) throws ParseException{
-		return new ResponseEntity<>(SF.ShowStats(city, periodo),HttpStatus.OK);
-	}
+	/*@GetMapping(value="/stats")
+	public ResponseEntity<Object> ShowStatistics(@RequestBody RequestBodyClass body) throws ParseException{
+		return new ResponseEntity<>(stats.ShowStats(body),HttpStatus.OK);
+	}*/
 	
 }

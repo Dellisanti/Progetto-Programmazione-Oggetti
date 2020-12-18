@@ -1,3 +1,3 @@
-{"data":{"sunrise":1608100472,"sunset":1608132706,"name":"Ancona"}}
-{"data":{"sunrise":1608100472,"sunset":1608132706,"name":"Ancona"}}
-{"data":{"sunrise":1608100472,"sunset":1608132706,"name":"Ancona"}}
+{"sunrise":"17-12-2020 07:35:11","sunset":"17-12-2020 16:32:03","name":"Ancona"}
+{"sunrise":"18-12-2020 07:58:02","sunset":"18-12-2020 16:41:04","name":"Ancona"}
+{"sunrise":"19-12-2020 08:04:05","sunset":"19-12-2020 16:49:35","name":"Ancona"}

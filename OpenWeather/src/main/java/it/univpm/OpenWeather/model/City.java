@@ -8,8 +8,8 @@ package it.univpm.OpenWeather.model;
 
 public class City implements Orari{
 	private String name;
-	private long sunrise;
-	private long sunset;
+	private String sunrise;
+	private String sunset;
 	
 	public String getName() {
 		return name;
@@ -18,16 +18,16 @@ public class City implements Orari{
 		this.name = name;
 	}
 	
-	public long getSunrise() {
+	public String getSunrise() {
 		return sunrise;
 	}
-	public void setSunrise(long sunrise) {
+	public void setSunrise(String sunrise) {
 		this.sunrise = sunrise;
 	}
-	public long getSunset() {
+	public String getSunset() {
 		return sunset;
 	}
-	public void setSunset(long sunset) {
+	public void setSunset(String sunset) {
 		this.sunset = sunset;
 	}
 

@@ -2,9 +2,9 @@ package it.univpm.OpenWeather.model;
 
 public interface Orari {
 	
-	public long getSunrise();
-	public void setSunrise(long sunrise);
-	public long getSunset();
-	public void setSunset(long sunset);
+	public String getSunrise();
+	public void setSunrise(String sunrise);
+	public String getSunset();
+	public void setSunset(String sunset);
 	
 }

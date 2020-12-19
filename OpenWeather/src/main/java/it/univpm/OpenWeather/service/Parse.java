@@ -3,14 +3,12 @@ package it.univpm.OpenWeather.service;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import it.univpm.OpenWeather.model.City;
 
 @Service

@@ -1,20 +1,16 @@
 package it.univpm.OpenWeather.statistics;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Vector;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import it.univpm.OpenWeather.model.City;
 import it.univpm.OpenWeather.model.Orari;
 import it.univpm.OpenWeather.model.RequestBodyClass;
 import it.univpm.OpenWeather.service.Archive;
 import it.univpm.OpenWeather.service.ConvertedDate;
-import it.univpm.OpenWeather.service.Utils;
 
 @Service
 public class Statistics {
@@ -39,9 +35,9 @@ public class Statistics {
 		String Sunset1 = orari.get(0).getSunset();
 		String Sunrise2 = orari.get(body.getPeriod()-1).getSunrise();
 		String Sunset2 = orari.get(body.getPeriod()-1).getSunset();
-		long sunrise = date.ConvertToDate(Sunrise2) - date.ConvertToDate(Sunrise1);
-		long sunset = date.ConvertToDate(Sunset2) - date.ConvertToDate(Sunset1);
-		stat = data.calculateData(sunrise,sunset,body.getPeriod()-1);
+		long sunrise = date.ConvertDate(Sunrise2) - date.ConvertDate(Sunrise1);
+		long sunset = date.ConvertDate(Sunset2) - date.ConvertDate(Sunset1);
+		stat = data.calculateData(sunrise,sunset,body.getPeriod());
 		return stat;
 	}
 	

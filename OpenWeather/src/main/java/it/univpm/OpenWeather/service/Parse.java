@@ -34,6 +34,7 @@ public class Parse {
 		return city;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void Save(City city) {
 		try {
 			JSONObject obj = new JSONObject();
@@ -47,4 +48,5 @@ public class Parse {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"File non trovato");
 		}
 	}
+	
 }

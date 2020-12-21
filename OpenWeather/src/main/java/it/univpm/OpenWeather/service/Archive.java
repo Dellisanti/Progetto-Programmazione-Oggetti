@@ -29,7 +29,7 @@ public class Archive {
 				next = fileR.readLine();
 				if(next!=null) {
 					obj = (JSONObject) JSONValue.parseWithException(next);
-					if(body.getName().equals(obj.get("name"))) {
+					if(body.getName().equalsIgnoreCase((String) obj.get("name"))) {
 						City c = new City();
 						c.setName(body.getName());
 						c.setSunrise((String)obj.get("sunrise"));

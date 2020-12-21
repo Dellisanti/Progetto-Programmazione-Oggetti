@@ -16,8 +16,8 @@ public class ConvertedDate {
 	City c;
 
 	public City calculateData(long sunrise, long sunset, int giorni) {
-		sunrise -= 86400*giorni;
-		sunset -= 86400*giorni;
+		sunrise -= 86400*(giorni-1);
+		sunset -= 86400*(giorni-1);
 		long Ore1 = sunrise/3600;
 		long Minuti1=(sunrise%3600)/60;
 		long Secondi1=(sunrise%3600)%60;
@@ -30,7 +30,7 @@ public class ConvertedDate {
 		return c;
 	}
 	
-	public long ConvertToDate(String dateString) {
+	public long ConvertDate(String dateString) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		Date convertedDate = new Date();
 		try {
@@ -38,7 +38,9 @@ public class ConvertedDate {
 		}catch(ParseException e) {
 			e.printStackTrace();
 		}
+		//System.out.println(convertedDate);
 		long date = convertedDate.getTime()/1000;
+		//System.out.println(date);
 		return date;
 	}
 	

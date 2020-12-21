@@ -6,10 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import it.univpm.OpenWeather.filters.Filters;
-import it.univpm.OpenWeather.model.City;
 import it.univpm.OpenWeather.model.RequestBodyClass;
-import it.univpm.OpenWeather.service.Parse;
-import it.univpm.OpenWeather.service.Utils;
+import it.univpm.OpenWeather.service.OpenWeather;
 import it.univpm.OpenWeather.statistics.Statistics;
 
 /**
@@ -22,11 +20,7 @@ import it.univpm.OpenWeather.statistics.Statistics;
 public class restController {
 	
 	@Autowired
-	Parse parse;
-	@Autowired
-	Utils util;
-	@Autowired
-	City city;
+	OpenWeather weather;
 	@Autowired
 	Filters filters;
 	@Autowired
@@ -40,13 +34,8 @@ public class restController {
 	 */
 	
 	@GetMapping(value="/weather/{paese}")
-	public ResponseEntity<Object> VediCittà(@PathVariable("paese") String paese) {
-		String ApiKey = util.readApiKey();
-		String url = "https://api.openweathermap.org/data/2.5/weather?q="+paese+"&appid="+ApiKey;
-		String data = util.ApiData(url);
-	    City c = parse.Parsing(data, city, paese);
-		parse.Save(c);
-		return new ResponseEntity<>(c, HttpStatus.OK);
+	public ResponseEntity<Object> ShowWeather(@PathVariable("paese") String paese) {
+		return new ResponseEntity<>(weather.getWeather(paese), HttpStatus.OK);
 	}
 	
 	/**

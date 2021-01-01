@@ -14,21 +14,6 @@ public class ConvertedDate {
 	
 	@Autowired
 	City c;
-
-	public City calculateData(long sunrise, long sunset, int giorni) {
-		sunrise -= 86400*(giorni-1);
-		sunset -= 86400*(giorni-1);
-		long Ore1 = sunrise/3600;
-		long Minuti1=(sunrise%3600)/60;
-		long Secondi1=(sunrise%3600)%60;
-		long Ore2 = sunset/3600;
-		long Minuti2=(sunset%3600)/60;
-		long Secondi2=(sunset%3600)%60;
-		c.setName("Statistiche dell'orario su "+giorni+" giorni :");
-		c.setSunrise("L'alba cambia di "+Ore1+":"+Minuti1+":"+Secondi1);
-		c.setSunset("Il tramonto cambia di "+Ore2+":"+Minuti2+":"+Secondi2);
-		return c;
-	}
 	
 	public long ConvertDate(String dateString) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -38,10 +23,25 @@ public class ConvertedDate {
 		}catch(ParseException e) {
 			e.printStackTrace();
 		}
-		//System.out.println(convertedDate);
-		long date = convertedDate.getTime()/1000;
-		//System.out.println(date);
+		long date = convertedDate.getTime()/1000; 
 		return date;
+	} 
+	
+	public City calculateData(String Sunrise1, String Sunrise2, String Sunset1, String Sunset2, int giorni) {
+		String data1 = Sunrise1.substring(0, 10);
+		String data2 = Sunrise2.substring(0, 10);
+		long sunrise = ConvertDate(Sunrise2) - ConvertDate(Sunrise1);
+		long sunset = ConvertDate(Sunset2) - ConvertDate(Sunset1);
+		sunrise -= 86400*giorni;
+		sunset -= 86400*giorni;
+		long Minuti1=(sunrise%3600)/60;
+		long Secondi1=(sunrise%3600)%60;
+		long Minuti2=(sunset%3600)/60;
+		long Secondi2=(sunset%3600)%60;
+		c.setName("Statistiche dell'orario dal "+data1+" al "+data2+" : ");
+		c.setSunrise("L'orario dell'alba cambia di "+Minuti1+" minuti e "+Secondi1+" secondi ");
+		c.setSunset("L'orario del tramonto cambia di "+Minuti2+" minuti e "+Secondi2+" secondi ");
+		return c;
 	}
 	
 }

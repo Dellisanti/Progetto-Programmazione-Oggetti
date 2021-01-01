@@ -23,21 +23,14 @@ public class Filters {
 		Archive archive = new Archive();
 		Vector<Orari> filters = new Vector<Orari>();
 		filters.addAll(archive.setArchivie(body));
-		if(body.getPeriod()==0)
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Periodo non ammesso");
-		if(filters.size()<body.getPeriod())
+		if(body.getStart()==0 && body.getEnd()==0) {
+			for(int i=filters.size()-1;i>=0;i--)
+				orari.add(filters.get(i));
+			return orari;
+		}
+		if(filters.size()<body.getEnd())
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Periodo troppo lungo..");
-		for(int i=filters.size()-1;i>=filters.size()-body.getPeriod();i--)
-			orari.add(filters.get(i));
-		return orari;
-	}
-
-	public Vector<Orari> ShowAllFilters(RequestBodyClass body) throws ParseException {
-		Archive archive = new Archive();
-		Vector<Orari> orari = new Vector<Orari>();
-		Vector<Orari> filters = new Vector<Orari>();
-		filters.addAll(archive.setArchivie(body));
-		for(int i=filters.size()-1;i>=0;i--)
+		for(int i=body.getEnd();i>=body.getStart();i--)
 			orari.add(filters.get(i));
 		return orari;
 	}

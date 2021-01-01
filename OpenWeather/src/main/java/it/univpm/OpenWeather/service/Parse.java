@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -14,9 +15,12 @@ import it.univpm.OpenWeather.model.City;
 @Service
 public class Parse {
 	
+	@Autowired
+	City city;
+	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 	
-	public City Parsing(String data, City city, String paese) {
+	public City Parsing(String data, String paese) {
 		JSONObject obj = null;
 		try {
 			obj = (JSONObject)JSONValue.parseWithException(data);
@@ -25,7 +29,7 @@ public class Parse {
 		}
 		JSONObject SRiseSSet= (JSONObject) obj.get("sys");
 		city.setName(paese);
-		long sunrise = (Long)SRiseSSet.get("sunrise");
+		long sunrise = (Long)SRiseSSet.get("sunrise") - 3600;
 		String dateSunrise = sdf.format(new java.util.Date(sunrise*1000));
 		city.setSunrise(dateSunrise);
 		long sunset = (Long)SRiseSSet.get("sunset");

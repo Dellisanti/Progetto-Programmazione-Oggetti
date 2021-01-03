@@ -53,7 +53,20 @@ L'utente dovrà sostituire **{period}** con:
 ![Untitled Document](https://user-images.githubusercontent.com/71764245/102500681-dd6d9200-407c-11eb-9096-57e0271d8aaa.png)
 
 * Classi:
-da caricare
+
+![Schermata 2021-01-03 alle 15 54 20 PM](https://user-images.githubusercontent.com/71764245/103481573-30b14580-4ddc-11eb-87eb-38940a39a11a.png)
+
+![Schermata 2021-01-03 alle 15 54 35 PM](https://user-images.githubusercontent.com/71764245/103481574-327b0900-4ddc-11eb-9176-d187faf12480.png)
+
+![Schermata 2021-01-03 alle 15 54 48 PM](https://user-images.githubusercontent.com/71764245/103481575-34dd6300-4ddc-11eb-991c-608fe2530cf5.png)
+
+![Schermata 2021-01-03 alle 15 55 02 PM](https://user-images.githubusercontent.com/71764245/103481577-360e9000-4ddc-11eb-863b-78dcb91e438f.png)
+
+![Schermata 2021-01-03 alle 15 55 15 PM](https://user-images.githubusercontent.com/71764245/103481580-37d85380-4ddc-11eb-91fe-0fa04943c33f.png)
+
+![Schermata 2021-01-03 alle 15 55 30 PM](https://user-images.githubusercontent.com/71764245/103481584-3b6bda80-4ddc-11eb-961b-1cc695c6dc0b.png)
+
+
 
 * Sequenze:
 

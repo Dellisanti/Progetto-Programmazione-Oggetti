@@ -56,7 +56,16 @@ L'utente dovrà sostituire **{period}** con:
 da caricare
 
 * Sequenze:
-da caricare
+
+![Schermata 2021-01-02 alle 22 37 28 PM](https://user-images.githubusercontent.com/71764245/103481491-a5d04b00-4ddb-11eb-8152-0717b34a1f68.png)
+
+![Schermata 2021-01-03 alle 15 25 51 PM](https://user-images.githubusercontent.com/71764245/103481492-a8cb3b80-4ddb-11eb-83e6-5ada68cc25de.png)
+
+![Schermata 2021-01-03 alle 15 35 44 PM](https://user-images.githubusercontent.com/71764245/103481495-ab2d9580-4ddb-11eb-8e64-706a119acaad.png)
+
+![Schermata 2021-01-03 alle 15 42 46 PM](https://user-images.githubusercontent.com/71764245/103481497-acf75900-4ddb-11eb-8895-1bd595072662.png)
+
+![Schermata 2021-01-03 alle 15 49 25 PM](https://user-images.githubusercontent.com/71764245/103481499-ae288600-4ddb-11eb-84b7-839d35fee117.png)
 
 ## Possibile implementazione del progetto:
 Un possibile caso di utilizzo della nostra applicazione potrebbe essere l'utilizzo urbano che prevede l'accensione e lo spegnimento dell'illuminazione pubblica in base a orario di alba e tramonto. Così da rendere automatico e più efficiente l'illuminazione pubblica ed evitando sprechi corrente.

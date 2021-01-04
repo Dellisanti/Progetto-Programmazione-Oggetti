@@ -42,7 +42,7 @@ public class Parse {
 	public void Save(City city) {
 		try {
 			JSONObject obj = new JSONObject();
-			FileWriter fileW = new FileWriter("Ancona.txt",true);
+			FileWriter fileW = new FileWriter("doc/Storico.txt",true);
 			obj.put("name", city.getName());
 			obj.put("sunrise", city.getSunrise());
 			obj.put("sunset", city.getSunset());

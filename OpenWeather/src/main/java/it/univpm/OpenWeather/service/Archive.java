@@ -26,7 +26,7 @@ public class Archive {
 		Vector<Orari> orari = new Vector<Orari>();
 		try {
 			String next;
-			BufferedReader fileR = new BufferedReader(new FileReader("Ancona.txt"));
+			BufferedReader fileR = new BufferedReader(new FileReader("doc/"+"Storico.txt"));
 			do {
 				next = fileR.readLine();
 				if(next!=null) {

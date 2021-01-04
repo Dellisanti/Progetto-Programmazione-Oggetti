@@ -36,7 +36,7 @@ public class Utils {
 	public String readApiKey() {
 		String ApiKey;
 		try {
-			BufferedReader fileR = new BufferedReader(new FileReader("ApiKey.txt"));
+			BufferedReader fileR = new BufferedReader(new FileReader("doc/"+"ApiKey.txt"));
 			ApiKey = fileR.readLine();
 			if(ApiKey==null) {
 				fileR.close();

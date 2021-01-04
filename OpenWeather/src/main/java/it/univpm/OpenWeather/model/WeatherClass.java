@@ -21,7 +21,7 @@ public class WeatherClass {
 	public Vector<String> getNames() {
 		String next;
 	    try {
-	    	BufferedReader fileR = new BufferedReader(new FileReader("Archive.txt"));
+	    	BufferedReader fileR = new BufferedReader(new FileReader("doc/"+"Archive.txt"));
 	    	do {
 	    		next = fileR.readLine();
 	    		if(next!=null) {

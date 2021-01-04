@@ -14,6 +14,18 @@ public class City implements Orari{
 	private String sunrise;
 	private String sunset;
 	
+	public City(String name, String sunrise, String sunset) {
+		this.name = name;
+		this.sunrise = sunrise;
+		this.sunset = sunset;
+	}
+	
+	public City() {
+		this.name = null;
+		this.sunrise = null;
+		this.sunset = null;
+	}
+	
 	public String getName() {
 		return name;
 	}

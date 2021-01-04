@@ -18,17 +18,18 @@ public class OpenWeather {
 	@Autowired
 	WeatherClass weather;
 	
-	Vector<String> paesi;
-	
 	public City getWeather(String paese) {
 		String ApiKey = util.readApiKey();
 		String url = "https://api.openweathermap.org/data/2.5/weather?q="+paese+"&appid="+ApiKey;
 		String data = util.ApiData(url);
 	    City c = parse.Parsing(data, paese);
-	    paesi = new Vector<String>();
-	    paesi = weather.getNames();
-	    if(paesi.contains(paese))
-	    	parse.Save(c);
+	    Vector<String> paesi = new Vector<String>(weather.getNames());
+	    for(int i=0;i<paesi.size();i++) {
+	    	if(paesi.get(i).equalsIgnoreCase(paese)) {
+	    		parse.Save(c);
+	    		break;
+	    	}
+	    }
 		return c;
 	}
 	

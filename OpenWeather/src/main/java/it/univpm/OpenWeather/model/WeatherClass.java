@@ -15,7 +15,7 @@ public class WeatherClass {
 	private Vector<String> names = new Vector<String>();
 	
 	public WeatherClass() {
-		this.setDescription("Città monitorate dal 18/12/2020 : ");
+		this.setDescription("Città monitorate dal 18/12/2020 al 21/01/2021 : ");
 	}
 	
 	public Vector<String> getNames() {

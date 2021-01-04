@@ -22,7 +22,9 @@ public class Variances {
 	ConvertedDate data;
 	
 	public City ShowVariances(RequestBodyClass body) throws ParseException {
-		if(body.getType().equals("max"))
+		if(body.getType()==null)
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"type is null..."); 
+		else if(body.getType().equals("max"))
 			return ShowMaxVariances(body);
 		else if(body.getType().equals("min"))
 			return ShowMinVariances(body);
@@ -52,9 +54,9 @@ public class Variances {
 		long minSunset = (maxSunset%3600)/60;
 		long secSunrise = (maxSunrise%3600)%60;
 		long secSunset = (maxSunset%3600)%60;
-		city.setSunrise("La varianza dell'alba è nel giorno : "+orari.get(giornoMaxSunrise).getSunrise().substring(0,10)+
+		city.setSunrise("Il giorno : "+orari.get(giornoMaxSunrise).getSunrise().substring(0,10)+
 				" con : "+minSunrise+" minuti e "+secSunrise+" secondi");
-		city.setSunset("La varianza del tramonto è nel giorno : "+orari.get(giornoMaxSunset).getSunset().substring(0,10)+
+		city.setSunset("Il giorno : "+orari.get(giornoMaxSunset).getSunset().substring(0,10)+
 				" con : "+minSunset+" minuti e "+secSunset+" secondi");
 		return city;
 	}
@@ -67,7 +69,6 @@ public class Variances {
 		for(int i=1;i<orari.size();i++) {
 			long sunrise = data.ConvertDate(orari.get(i).getSunrise()) - data.ConvertDate(orari.get(i-1).getSunrise()) - 86400;
 			long sunset = data.ConvertDate(orari.get(i).getSunset()) - data.ConvertDate(orari.get(i-1).getSunset()) - 86400;
-			System.out.println(data.ConvertDate(orari.get(i).getSunrise())+" - "+data.ConvertDate(orari.get(i-1).getSunrise()));
 			if(minSunrise>sunrise) {
 				minSunrise=sunrise;
 				giornoMinSunrise = i;
@@ -83,9 +84,9 @@ public class Variances {
 		long minsSunset = (minSunset%3600)/60;
 		long secSunrise = (minSunrise%3600)%60;
 		long secSunset = (minSunset%3600)%60;
-		city.setSunrise("La varianza dell'alba è nel giorno : "+orari.get(giornoMinSunrise).getSunrise().substring(0,10)+
+		city.setSunrise("Il giorno : "+orari.get(giornoMinSunrise).getSunrise().substring(0,10)+
 				" con : "+minsSunrise+" minuti e "+secSunrise+" secondi");
-		city.setSunset("La varianza del tramonto è nel giorno : "+orari.get(giornoMinSunset).getSunset().substring(0,10)+
+		city.setSunset("Il giorno : "+orari.get(giornoMinSunset).getSunset().substring(0,10)+
 				" con : "+minsSunset+" minuti e "+secSunset+" secondi");
 		return city;
 	}

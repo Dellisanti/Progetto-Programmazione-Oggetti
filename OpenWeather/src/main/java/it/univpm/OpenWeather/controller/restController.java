@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import it.univpm.OpenWeather.exception.InvalidBodyException;
 import it.univpm.OpenWeather.filters.Filters;
 import it.univpm.OpenWeather.model.RequestBodyClass;
 import it.univpm.OpenWeather.model.WeatherClass;
@@ -56,10 +58,11 @@ public class restController {
 	 * @param periodo Tipo parametro che dichiara di quale periodo si intende filtrare lo storico.
 	 * @return Ritornano i dati filtrati dallo storico per il periodo indicato
 	 * @throws ParseException 
+	 * @throws InvalidBodyException 
 	 */
 	
 	@PostMapping(value="/history")
-	public ResponseEntity<Object> ShowHistory(@RequestBody RequestBodyClass body) throws ParseException{
+	public ResponseEntity<Object> ShowHistory(@RequestBody RequestBodyClass body) throws ParseException, InvalidBodyException{
 		return new ResponseEntity<>(filters.ShowFilters(body),HttpStatus.OK);
 	}
 	
@@ -70,15 +73,16 @@ public class restController {
 	 * @return Ritornano le statistiche in base al periodo richiesto.
 	 * @throws ParseException 
 	 * @throws java.text.ParseException 
+	 * @throws InvalidBodyException 
 	 */
 	
 	@PostMapping(value="/stats")
-	public ResponseEntity<Object> ShowStatistics(@RequestBody RequestBodyClass body) throws ParseException {
+	public ResponseEntity<Object> ShowStatistics(@RequestBody RequestBodyClass body) throws ParseException, InvalidBodyException {
 		return new ResponseEntity<>(stats.ShowStats(body),HttpStatus.OK);
 	}
 	
 	@PostMapping(value="/variances")
-	public ResponseEntity<Object> ShowVariances(@RequestBody RequestBodyClass body) throws ParseException {
+	public ResponseEntity<Object> ShowVariances(@RequestBody RequestBodyClass body) throws ParseException, InvalidBodyException {
 		return new ResponseEntity<>(variance.ShowVariances(body),HttpStatus.OK);
 	}
 	

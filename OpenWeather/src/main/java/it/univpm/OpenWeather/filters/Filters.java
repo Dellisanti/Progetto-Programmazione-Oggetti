@@ -2,9 +2,9 @@ package it.univpm.OpenWeather.filters;
 
 import java.util.Vector;
 import org.json.simple.parser.ParseException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+
+import it.univpm.OpenWeather.exception.InvalidBodyException;
 import it.univpm.OpenWeather.model.Orari;
 import it.univpm.OpenWeather.model.RequestBodyClass;
 import it.univpm.OpenWeather.service.Archive;
@@ -18,7 +18,7 @@ import it.univpm.OpenWeather.service.Archive;
 @Service
 public class Filters {
 	
-	public Vector<Orari> ShowFilters(RequestBodyClass body) throws ParseException {
+	public Vector<Orari> ShowFilters(RequestBodyClass body) throws ParseException, InvalidBodyException {
 		Vector<Orari> orari = new Vector<Orari>();
 		Archive archive = new Archive();
 		Vector<Orari> filters = new Vector<Orari>();
@@ -28,8 +28,6 @@ public class Filters {
 				orari.add(filters.get(i));
 			return orari;
 		}
-		if(filters.size()<body.getEnd())
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Periodo troppo lungo..");
 		for(int i=body.getEnd();i>=body.getStart();i--)
 			orari.add(filters.get(i));
 		return orari;

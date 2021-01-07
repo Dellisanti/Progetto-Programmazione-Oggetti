@@ -7,9 +7,8 @@ import java.util.Vector;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+import it.univpm.OpenWeather.exception.InvalidBodyException;
 import it.univpm.OpenWeather.model.City;
 import it.univpm.OpenWeather.model.Orari;
 import it.univpm.OpenWeather.model.RequestBodyClass;
@@ -17,11 +16,16 @@ import it.univpm.OpenWeather.model.RequestBodyClass;
 @Service
 public class Archive {
 
-	public Vector<Orari> setArchivie(RequestBodyClass body) throws ParseException {
-		if(body.getStart()<0 || body.getEnd()<0)
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Periodo negativo non ammesso..");
-		if(body.getEnd()<body.getStart())
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Periodo non ammesso..");
+
+	public Vector<Orari> setArchivie(RequestBodyClass body) throws InvalidBodyException, ParseException{
+		if(body.getStart()<0 || body.getEnd()<0) {
+			String out = "Periodo negativo...";
+			throw new InvalidBodyException(out); 
+		}
+		if(body.getEnd()<body.getStart()) {
+			String out = "Periodo non ammesso...";
+			throw new InvalidBodyException(out);
+		}
 		JSONObject obj = new JSONObject();
 		Vector<Orari> orari = new Vector<Orari>();
 		try {
@@ -40,12 +44,18 @@ public class Archive {
 					}
 				} else if(orari.isEmpty()) {
 					fileR.close();
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Città non presente nell'archivio..");
+					String out = "Città non presente nell'archivio...";
+					throw new InvalidBodyException(out); 
 				}
 			}while(next!=null);
 			fileR.close();
 		}catch(IOException e) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"File non trovato..");
+			String out = "File non trovato";
+			throw new InvalidBodyException(out); 
+		}
+		if(body.getEnd()>orari.size()-1) {
+			String out = "Periodo troppo lungo";
+			throw new InvalidBodyException(out); 
 		}
 		return orari;
 	}

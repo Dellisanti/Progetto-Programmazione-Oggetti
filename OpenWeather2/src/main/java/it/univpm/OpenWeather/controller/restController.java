@@ -47,13 +47,18 @@ public class restController {
 		return new ResponseEntity<>(weather.getWeather(paese), HttpStatus.OK);
 	}
 	
+	/**
+	 * Rotta di tipo GET che mostra le città monitorate
+	 * @return Ritornano le città presenti nell'archivio.
+	 */
+	
 	@GetMapping(value="/weather")
 	public WeatherClass ShowArchive() {
 		return new WeatherClass();
 	}
 	
 	/**
-	 * Rotta di tipo GET che effettua il filtraggio dei dati in base al periodo scelto dall'utente.
+	 * Rotta di tipo POST che effettua il filtraggio dei dati in base al periodo scelto dall'utente.
 	 * @param paese Tipo parametro che dichiara di quale paese si intende conoscere i dati.
 	 * @param periodo Tipo parametro che dichiara di quale periodo si intende filtrare lo storico.
 	 * @return Ritornano i dati filtrati dallo storico per il periodo indicato
@@ -67,7 +72,7 @@ public class restController {
 	}
 	
 	/**
-	 * Rotta di tipo GET che effettua le statistiche dei dati in base al periodo scelto dall'utente.
+	 * Rotta di tipo POST che mostra le statistiche dei dati in base al periodo scelto dall'utente.
 	 * @param paese Tipo parametro che dichiara di quale paese si intende conoscere i dati.
 	 * @param periodo Tipo parametro che dichiara di quale periodo si intende fare statistiche.
 	 * @return Ritornano le statistiche in base al periodo richiesto.
@@ -80,6 +85,14 @@ public class restController {
 	public ResponseEntity<Object> ShowStatistics(@RequestBody RequestBodyClass body) throws ParseException, InvalidBodyException {
 		return new ResponseEntity<>(stats.ShowStats(body),HttpStatus.OK);
 	}
+	
+	/**
+	 * Rotta di tipo POST che mostra le varianze in base al periodo scelto dall'utente
+	 * @param body
+	 * @return Ritornano le varianze in base al periodo richiesto
+	 * @throws ParseException
+	 * @throws InvalidBodyException
+	 */
 	
 	@PostMapping(value="/variances")
 	public ResponseEntity<Object> ShowVariances(@RequestBody RequestBodyClass body) throws ParseException, InvalidBodyException {

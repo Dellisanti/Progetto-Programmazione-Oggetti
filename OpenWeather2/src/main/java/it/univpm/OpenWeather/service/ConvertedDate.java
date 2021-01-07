@@ -9,11 +9,22 @@ import org.springframework.stereotype.Service;
 
 import it.univpm.OpenWeather.model.City;
 
+/**
+ * @author De Ritis Riccardo
+ * @author francesco Dellisanti
+ */
+
 @Service
 public class ConvertedDate {
 	
 	@Autowired
 	City c;
+	
+	/**
+	 * Metodo per convertire il formato Date in String
+	 * @param dateString
+	 * @return Data convertita in Stringa
+	 */
 	
 	public long ConvertDate(String dateString) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -26,6 +37,16 @@ public class ConvertedDate {
 		long date = convertedDate.getTime()/1000; 
 		return date;
 	} 
+	
+	/**
+	 * Metodo per calcolare le statistiche
+	 * @param Sunrise1
+	 * @param Sunrise2
+	 * @param Sunset1
+	 * @param Sunset2
+	 * @param giorni
+	 * @return città con all'interno le statistiche
+	 */
 	
 	public City calculateData(String Sunrise1, String Sunrise2, String Sunset1, String Sunset2, int giorni) {
 		String data1 = Sunrise1.substring(0, 10);

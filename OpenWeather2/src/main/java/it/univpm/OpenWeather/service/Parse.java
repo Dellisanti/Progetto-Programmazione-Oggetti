@@ -12,6 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import it.univpm.OpenWeather.model.City;
 
+/**
+ * @author De Ritis Riccardo
+ * @author francesco Dellisanti
+ */
+
 @Service
 public class Parse {
 	
@@ -19,6 +24,13 @@ public class Parse {
 	City city;
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+	
+	/**
+	 * Metodo che salva in una città i valori degli orari presi dall'API.
+	 * @param data
+	 * @param paese
+	 * @return città con nome e orari della città
+	 */
 	
 	public City Parsing(String data, String paese) {
 		JSONObject obj = null;
@@ -38,7 +50,12 @@ public class Parse {
 		return city;
 	}
 	
-	@SuppressWarnings("unchecked")
+	/**
+	 * Metodo che salva su file gli orari della città richiesta
+	 * @param city
+	 */
+	
+	@SuppressWarnings("unchecked") //Avvisa che il codice sia sicuro e non genere un'eccezione
 	public void Save(City city) {
 		try {
 			JSONObject obj = new JSONObject();

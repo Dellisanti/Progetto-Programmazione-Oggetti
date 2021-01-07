@@ -13,9 +13,21 @@ import it.univpm.OpenWeather.model.City;
 import it.univpm.OpenWeather.model.Orari;
 import it.univpm.OpenWeather.model.RequestBodyClass;
 
+/**
+ * Classe archivio per prendere dal file i dati richiesti
+ * @author De Ritis Riccardo
+ * @author francesco Dellisanti
+ */
+
 @Service
 public class Archive {
 
+	/**
+	 * @param body
+	 * @return Vettore di Orari che contiente tutti gli orari della città richiesta
+	 * @throws InvalidBodyException
+	 * @throws ParseException
+	 */
 
 	public Vector<Orari> setArchivie(RequestBodyClass body) throws InvalidBodyException, ParseException{
 		if(body.getStart()<0 || body.getEnd()<0) {

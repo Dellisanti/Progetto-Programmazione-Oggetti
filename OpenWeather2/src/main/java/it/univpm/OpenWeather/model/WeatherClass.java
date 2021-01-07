@@ -8,6 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Classe per visualizzare quali sono le città monitorate
+ * @author De Ritis Riccardo
+ * @author francesco Dellisanti
+ */
+
 @Service
 public class WeatherClass {
 	
@@ -18,6 +24,9 @@ public class WeatherClass {
 		this.setDescription("Città monitorate dal 18/12/2020 al 21/01/2021 : ");
 	}
 	
+	/**
+	 * @return vettore di stringhe che contiente i nomi delle città monitorate
+	 */
 	public Vector<String> getNames() {
 		String next;
 	    try {

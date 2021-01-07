@@ -3,16 +3,24 @@ package it.univpm.OpenWeather.model;
 import org.springframework.stereotype.Service;
 
 /**
- * Classe che modella i dati del Paese.
+ * Classe che implementa Orari e modella i dati del Paese.
  * @author De Ritis Riccardo
  * @author francesco Dellisanti
  */
 
 @Service
 public class City implements Orari{
+	
 	private String name;
 	private String sunrise;
 	private String sunset;
+	
+	/**
+	 * Costruttore con parametri
+	 * @param name
+	 * @param sunrise
+	 * @param sunset
+	 */
 	
 	public City(String name, String sunrise, String sunset) {
 		this.name = name;
@@ -20,12 +28,19 @@ public class City implements Orari{
 		this.sunset = sunset;
 	}
 	
+	/**
+	 * Costruttore senza parametri
+	 */
+	
 	public City() {
 		this.name = null;
 		this.sunrise = null;
 		this.sunset = null;
 	}
 	
+	/**
+	 * Metodi Getter, Setter di name,sunrise e sunset
+	 */
 	public String getName() {
 		return name;
 	}

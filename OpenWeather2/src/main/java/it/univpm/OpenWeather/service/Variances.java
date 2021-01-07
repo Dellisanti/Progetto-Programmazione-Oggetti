@@ -13,6 +13,11 @@ import it.univpm.OpenWeather.model.City;
 import it.univpm.OpenWeather.model.Orari;
 import it.univpm.OpenWeather.model.RequestBodyClass;
 
+/**
+ * @author De Ritis Riccardo
+ * @author francesco Dellisanti
+ */
+
 @Service
 public class Variances {
 	
@@ -23,6 +28,14 @@ public class Variances {
 	@Autowired
 	ConvertedDate data;
 	
+	/**
+	 * Metodo per vedere se l'utente vuole vedere la varianza massima o minima.
+	 * @param body
+	 * @return Città con all'interno le varianze richieste
+	 * @throws ParseException
+	 * @throws InvalidBodyException
+	 */
+	
 	public City ShowVariances(RequestBodyClass body) throws ParseException, InvalidBodyException {
 		if(body.getType()==null)
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"type is null..."); 
@@ -32,6 +45,14 @@ public class Variances {
 			return ShowMinVariances(body);
 		else throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Tipo non ammesso..");
 	}
+	
+	/**
+	 * Metodo per ottenere la varianza massima su un periodo scelto dall'utente
+	 * @param body
+	 * @return Città con la varianza massima
+	 * @throws ParseException
+	 * @throws InvalidBodyException
+	 */
 	
 	public City ShowMaxVariances(RequestBodyClass body) throws ParseException, InvalidBodyException {
 		long maxSunrise=0, maxSunset=0;
@@ -92,6 +113,14 @@ public class Variances {
 		}
 			
 	}
+	
+	/**
+	 * Metodo per ottenere la varianza minima su un periodo scelto dall'utente
+	 * @param body
+	 * @return Città con la varianza minima
+	 * @throws ParseException
+	 * @throws InvalidBodyException
+	 */
 	
 	public City ShowMinVariances(RequestBodyClass body) throws ParseException, InvalidBodyException {
 		long minSunrise=1000, minSunset=1000;

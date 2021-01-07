@@ -11,8 +11,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * @author De Ritis Riccardo
+ * @author francesco Dellisanti
+ */
+
 @Service
 public class Utils {
+	
+	/**
+	 * Metodo per ottenere i dati dall'API.
+	 * @param url
+	 * @return Stringa contenente tutta la risposta dell'API
+	 */
 		
 	public String ApiData (String url) {
 		String data = "";
@@ -32,6 +43,10 @@ public class Utils {
 		}
 		return data;
 	}
+	
+	/**
+	 *Metodo che leggi l'APIkey da un file
+	 */
 	
 	public String readApiKey() {
 		String ApiKey;

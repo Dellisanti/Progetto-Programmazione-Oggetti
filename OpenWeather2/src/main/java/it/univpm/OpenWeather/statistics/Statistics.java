@@ -12,6 +12,11 @@ import it.univpm.OpenWeather.model.RequestBodyClass;
 import it.univpm.OpenWeather.service.Archive;
 import it.univpm.OpenWeather.service.ConvertedDate;
 
+/**
+ * @author De Ritis Riccardo
+ * @author francesco Dellisanti
+ */
+
 @Service
 public class Statistics {
 	
@@ -19,6 +24,14 @@ public class Statistics {
 	Archive archive;
 	@Autowired
 	ConvertedDate data;
+	
+	/**
+	 * Metodo che visualizza le statistiche su un periodo scelto.
+	 * @param body
+	 * @return Città con le statistiche su un periodo scelto
+	 * @throws ParseException
+	 * @throws InvalidBodyException
+	 */
 	
 	public City ShowStats(RequestBodyClass body) throws ParseException, InvalidBodyException {
 		Vector<Orari> orari = new Vector<Orari>();

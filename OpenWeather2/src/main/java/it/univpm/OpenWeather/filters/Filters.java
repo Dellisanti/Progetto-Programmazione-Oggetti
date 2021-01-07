@@ -23,8 +23,8 @@ public class Filters {
 		Archive archive = new Archive();
 		Vector<Orari> filters = new Vector<Orari>();
 		filters.addAll(archive.setArchivie(body));
-		if(body.getStart()==0 && body.getEnd()==0) {
-			for(int i=filters.size()-1;i>=0;i--)
+		if(body.getStart()==0 && body.getEnd()==0) { 
+			for(int i=filters.size()-1;i>=0;i--) //aggiunge gli elementi dall'alto verso il basso
 				orari.add(filters.get(i));
 			return orari;
 		}

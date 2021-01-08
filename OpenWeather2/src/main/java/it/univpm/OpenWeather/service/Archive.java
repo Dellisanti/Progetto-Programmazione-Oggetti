@@ -32,7 +32,8 @@ public class Archive {
 	 */
 
 	public Vector<Orari> setArchivie(RequestBodyClass body) throws InvalidBodyException, ParseException{
-		if(date.ConvertDate(body.getEnd())<date.ConvertDate(body.getStart())) {
+		int a = (body.getStart()).compareTo(body.getEnd());
+		if(a > 0) {
 			String out = "Periodo non ammesso...";
 			throw new InvalidBodyException(out);
 		}

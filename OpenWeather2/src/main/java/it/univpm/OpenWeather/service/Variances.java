@@ -99,6 +99,10 @@ public class Variances {
 		for(int i=1;i<orari.size()-1;i++) {
 			long sunrise = data.ConvertDate(orari.get(i).getSunrise()) - data.ConvertDate(orari.get(i-1).getSunrise()) - 86400;
 			long sunset = data.ConvertDate(orari.get(i).getSunset()) - data.ConvertDate(orari.get(i-1).getSunset()) - 86400;
+			if(sunrise<0)
+				sunrise *= -1;
+			if(sunset<0)
+				sunset *= -1;
 			if(minSunrise>sunrise) {
 				minSunrise=sunrise;
 				giornoMinSunrise = i;

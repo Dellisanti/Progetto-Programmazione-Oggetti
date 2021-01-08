@@ -23,7 +23,7 @@ public class Parse {
 	@Autowired
 	City city;
 	
-	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	/**
 	 * Metodo che salva in una città i valori degli orari presi dall'API.
@@ -41,7 +41,7 @@ public class Parse {
 		}
 		JSONObject SRiseSSet= (JSONObject) obj.get("sys");
 		city.setName(paese);
-		long sunrise = (Long)SRiseSSet.get("sunrise") - 3600;
+		long sunrise = (Long)SRiseSSet.get("sunrise");
 		String dateSunrise = sdf.format(new java.util.Date(sunrise*1000));
 		city.setSunrise(dateSunrise);
 		long sunset = (Long)SRiseSSet.get("sunset");

@@ -12,6 +12,13 @@ public class RequestBodyClass {
 	private String name;
 	private String type;
 	 
+	public RequestBodyClass(String start, String end, String name, String type) {
+		this.start = start;
+		this.end = end;
+		this.name = name;
+		this.type = type;
+	}
+	
 	/**
 	 * Metodi Get di name,start,end e Type
 	 */

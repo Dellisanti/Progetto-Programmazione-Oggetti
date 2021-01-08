@@ -27,7 +27,7 @@ public class ConvertedDate {
 	 */
 	
 	public long ConvertDate(String dateString) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date convertedDate = new Date();
 		try {
 			convertedDate = sdf.parse(dateString);

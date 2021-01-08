@@ -16,7 +16,7 @@ import it.univpm.OpenWeather.model.RequestBodyClass;
 /**
  * Classe archivio per prendere dal file i dati richiesti
  * @author De Ritis Riccardo
- * @author francesco Dellisanti
+ * @author Dellisanti Francesco
  */
 
 @Service

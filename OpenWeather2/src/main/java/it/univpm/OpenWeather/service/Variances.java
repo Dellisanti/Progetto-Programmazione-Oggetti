@@ -15,7 +15,7 @@ import it.univpm.OpenWeather.model.RequestBodyClass;
 
 /**
  * @author De Ritis Riccardo
- * @author francesco Dellisanti
+ * @author Dellisanti Francesco
  */
 
 @Service

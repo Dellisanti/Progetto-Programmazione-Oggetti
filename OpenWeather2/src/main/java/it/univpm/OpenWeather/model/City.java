@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 /**
  * Classe che implementa Orari e modella i dati del Paese.
  * @author De Ritis Riccardo
- * @author francesco Dellisanti
+ * @author Dellisanti Francesco
  */
 
 @Service

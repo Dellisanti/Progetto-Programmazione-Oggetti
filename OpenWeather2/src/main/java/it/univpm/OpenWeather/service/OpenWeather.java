@@ -9,7 +9,7 @@ import it.univpm.OpenWeather.model.WeatherClass;
 /**
  * Classe per prendere i dati dall'API e salvarli sul file se presentii nell'archivio
  * @author De Ritis Riccardo
- * @author francesco Dellisanti
+ * @author Dellisanti Francesco
  */
 
 @Service

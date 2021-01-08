@@ -3,7 +3,7 @@ package it.univpm.OpenWeather.model;
 /**
  * Classe utilizzata per inserire i dati e ottenere filtri, statistiche e varianze.
  * @author De Ritis Riccardo
- * @author francesco Dellisanti
+ * @author Dellisanti Francesco
  */
 
 public class RequestBodyClass {

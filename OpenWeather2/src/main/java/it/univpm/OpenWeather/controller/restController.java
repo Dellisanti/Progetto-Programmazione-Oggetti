@@ -17,7 +17,7 @@ import it.univpm.OpenWeather.statistics.Statistics;
 /**
  * Rappresenta la classe che gestisce tutte le chiamate al server
  * @author De Ritis Riccardo
- * @author francesco Dellisanti
+ * @author Dellisanti Francesco
  */
 
 @RestController

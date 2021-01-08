@@ -12,7 +12,7 @@ import it.univpm.OpenWeather.service.Archive;
 /**
  * Classe che implementa il filtraggio dei dati dello storico in base al periodo richiesto dall'utente.
  * @author De Ritis Riccardo
- * @author francesco Dellisanti
+ * @author Dellisanti Francesco
  */
 
 @Service

@@ -11,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 /**
  * Classe per visualizzare quali sono le città monitorate
  * @author De Ritis Riccardo
- * @author francesco Dellisanti
+ * @author Dellisanti Francesco
  */
 
 @Service

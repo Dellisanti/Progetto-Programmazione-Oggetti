@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(JUnitPlatform.class)
-@SelectClasses({CityTest.class, ArchiveTest.class})
+@SelectClasses({CityTest.class})
 public class AllTests {
 }

@@ -21,7 +21,9 @@ import it.univpm.OpenWeather.model.RequestBodyClass;
 
 @Service
 public class Archive {
-
+	
+	ConvertedDate date = new ConvertedDate();
+	
 	/**
 	 * @param body
 	 * @return Vettore di Orari che contiente tutti gli orari della città richiesta
@@ -29,13 +31,8 @@ public class Archive {
 	 * @throws ParseException
 	 */
 
-	
 	public Vector<Orari> setArchivie(RequestBodyClass body) throws InvalidBodyException, ParseException{
-		if(body.getStart()<0 || body.getEnd()<0) {
-			String out = "Periodo negativo...";
-			throw new InvalidBodyException(out); 
-		}
-		if(body.getEnd()<body.getStart()) {
+		if(date.ConvertDate(body.getEnd())<date.ConvertDate(body.getStart())) {
 			String out = "Periodo non ammesso...";
 			throw new InvalidBodyException(out);
 		}
@@ -66,11 +63,26 @@ public class Archive {
 			String out = "File non trovato";
 			throw new InvalidBodyException(out); 
 		}
-		if(body.getEnd()>orari.size()-1) {
-			String out = "Periodo troppo lungo";
-			throw new InvalidBodyException(out); 
+		if(body.getStart()==null && body.getEnd()==null)
+			return orari;
+		else {
+			int start=0,end=0;
+			for(int i=orari.size()-1;i>=0;i--) {
+				if(orari.get(i).getSunrise().substring(0,10).equals(body.getStart())) 
+					start = i;
+				if(orari.get(i).getSunrise().substring(0,10).equals(body.getEnd()))
+					end=i;
+			}
+			if(start == 0 || end == 0) {
+				String out = "Periodo non presente nell'archivio...";
+				throw new InvalidBodyException(out);
+			}
+			Vector<Orari> filters = new Vector<Orari>();
+			for(int i=start;i<=end;i++) {
+				filters.add(orari.get(i));
+			}
+			return filters;
 		}
-		return orari;
 	}
 	
 }

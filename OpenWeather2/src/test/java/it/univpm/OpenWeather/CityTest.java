@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import it.univpm.OpenWeather.model.City;
@@ -23,7 +22,6 @@ class CityTest {
 	}
 
 	@Test
-	@DisplayName("test city")
 	void test() {
 		assertEquals("", c.getName());
 		assertEquals("" ,c.getSunrise());
@@ -31,7 +29,6 @@ class CityTest {
 	}
 	
 	@Test
-	@DisplayName("test 2 city")
 	void test1() {
 		assertAll("valori", ()->assertEquals("", c.getName()),
 				()->assertEquals("", c.getSunrise()),

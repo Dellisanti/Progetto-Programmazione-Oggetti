@@ -41,7 +41,7 @@ public class Parse {
 		}
 		JSONObject SRiseSSet= (JSONObject) obj.get("sys");
 		city.setName(paese);
-		long sunrise = (Long)SRiseSSet.get("sunrise");
+		long sunrise = (Long)SRiseSSet.get("sunrise") - 3600;
 		String dateSunrise = sdf.format(new java.util.Date(sunrise*1000));
 		city.setSunrise(dateSunrise);
 		long sunset = (Long)SRiseSSet.get("sunset");

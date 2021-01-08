@@ -7,18 +7,10 @@ package it.univpm.OpenWeather.model;
  */
 
 public class RequestBodyClass {
-	private int start;
-	private int end;
+	private String start;
+	private String end;
 	private String name;
 	private String type;
-	
-	
-	public RequestBodyClass(int start, int end, String name, String type) {
-		this.start = start;
-		this.end = end;
-		this.name = name;
-		this.type = type;
-	}
 	 
 	/**
 	 * Metodi Get di name,start,end e Type
@@ -27,11 +19,11 @@ public class RequestBodyClass {
 		return name;
 	}
 
-	public int getStart() {
+	public String getStart() {
 		return start;
 	}
 
-	public int getEnd() {
+	public String getEnd() {
 		return end;
 	}
 

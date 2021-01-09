@@ -4,10 +4,7 @@ import java.util.Vector;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
 import it.univpm.OpenWeather.exception.InvalidBodyException;
 import it.univpm.OpenWeather.model.City;
 import it.univpm.OpenWeather.model.Orari;
@@ -37,13 +34,18 @@ public class Variances {
 	 */
 	
 	public City ShowVariances(RequestBodyClass body) throws ParseException, InvalidBodyException {
-		if(body.getType()==null)
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"type is null..."); 
+		if(body.getType()==null || body.getType() == "") {
+			String out = "type is null...";
+			throw new InvalidBodyException(out);
+		}
 		else if(body.getType().equals("max"))
 			return ShowMaxVariances(body);
 		else if(body.getType().equals("min"))
 			return ShowMinVariances(body);
-		else throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Tipo non ammesso..");
+		else {
+		String out = "Tipo non ammesso..";
+		throw new InvalidBodyException(out);
+		}
 	}
 	
 	/**
@@ -76,7 +78,10 @@ public class Variances {
 				giornoMaxSunset = i;
 			}
 		}
-		city.setName("Varianza massima dal "+body.getStart()+" al "+body.getEnd());
+		if((body.getStart() == null || body.getStart() == "") && (body.getEnd() == null || body.getEnd() == "")) {
+			city.setName("Varianza massima dal "+orari.get(0).getSunrise().substring(0,10)+ " al " + orari.get(orari.size()-1).getSunrise().substring(0,10));
+		}
+		else city.setName("Varianza massima dal "+body.getStart()+ " al " + body.getEnd());
 		long minSunrise = (maxSunrise%3600)/60;
 		long minSunset = (maxSunset%3600)/60;
 		long secSunrise = (maxSunrise%3600)%60;
@@ -117,7 +122,10 @@ public class Variances {
 				giornoMinSunset = i;
 			}
 		}
-		city.setName("Varianza minima dal "+body.getStart()+" al "+body.getEnd());
+		if((body.getStart() == null || body.getStart() == "") && (body.getEnd() == null || body.getEnd() == "")) {
+			city.setName("Varianza massima dal "+orari.get(0).getSunrise().substring(0,10)+ " al " + orari.get(orari.size()-1).getSunrise().substring(0,10));
+		}
+		else city.setName("Varianza minima dal "+body.getStart()+" al "+body.getEnd());
 		long secSunrise = (minSunrise%3600)%60;
 		long secSunset = (minSunset%3600)%60;
 		city.setSunrise("Il giorno "+orari.get(giornoMinSunrise).getSunrise().substring(0,10)+" con "+secSunrise+" secondi");

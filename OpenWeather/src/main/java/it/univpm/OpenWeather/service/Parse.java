@@ -23,7 +23,7 @@ public class Parse {
 	@Autowired
 	City city;
 	
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 	
 	/**
 	 * Metodo che salva in una città i valori degli orari presi dall'API.

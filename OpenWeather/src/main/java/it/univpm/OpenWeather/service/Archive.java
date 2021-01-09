@@ -65,7 +65,7 @@ public class Archive {
 			String out = "File non trovato";
 			throw new InvalidBodyException(out); 
 		}
-		if(body.getStart()==null && body.getEnd()==null)
+		if((body.getStart()==null || body.getStart() == "") && (body.getEnd()==null || body.getEnd() == ""))
 			return orari;
 		else {
 			int start=-1,end=-1;

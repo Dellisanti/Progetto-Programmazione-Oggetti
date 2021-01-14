@@ -12,41 +12,115 @@ to do
 ## Rotte applicazione
 
 * **Keys:**
-	* Città = città scelta dall'utente
-	* Story = storico della città
+	* paese = città scelta dall'utente
+	
+Per le chiamate di tipo **Post** i parametri vengono passati attraverso un **Request Body**
+i parametri che dovranno essere passati sono:
+"start": (scrivere la data di inizio nel formato dd-MM-yyyy)
+"end": (scrivere la data di fine nel formato dd-MM-yyyy)
+"name": (scrivere il nome della città della quale si vogliono conoscere i dati)
+"type": (scrivere "min" o "max")
 
 1.
 Tipo | Path |
 ---- | ---- |
-Get | localhost:8080/città |
+Get | localhost:8080/Weather/{paese} |
 
 Fornisce all'utente orario di alba e tramonto della giornata odierna della città cercata.
+Sostituire **paese** con la città da cercare.
+
+**Esempio** 
+
+chiamata:
+
+![Schermata 2021-01-14 alle 17 23 42 PM](https://user-images.githubusercontent.com/71764245/104618671-4f8dc280-568d-11eb-930f-06700298472a.png)
+
+risposta:
+
+![Schermata 2021-01-14 alle 17 25 02 PM](https://user-images.githubusercontent.com/71764245/104618804-75b36280-568d-11eb-9d6b-5a407cafb974.png)
 
 2.
 Tipo | Path |
 ---- | ---- |
-Get | localhost:8080/archive?città/{period} |
+Get | localhost:8080/CityMonitor |
 
-Fornisce all'utente lo storico dei dati di alba e tramonto della città indicata
-L'utente dovrà sostituire **{period}** con:
+Fornisce all'utente l'elenco delle città monitorate fino ad oggi.
 
-  * il valore numerico del periodo dello storico che si vuole visualizzare
+**Esempio**
+
+chiamata:
+
+![Schermata 2021-01-14 alle 17 26 15 PM](https://user-images.githubusercontent.com/71764245/104618960-a1cee380-568d-11eb-8a95-215d5a8ecb6a.png)
+
+risposta:
+
+![Schermata 2021-01-14 alle 17 27 46 PM](https://user-images.githubusercontent.com/71764245/104619166-d93d9000-568d-11eb-9b3e-cfe9c4d2b3f9.png)
 
 3.
 Tipo | Path |
 ---- | ---- |
-Get | localhost:8080/stats/{type}/{period} |
+Post | localhost:8080/History |
 
-Fornisce all'utente statistiche riguardanti la variazione d'orario di alba e tramonto relative alla città cercata.
-L'utente dovrà sostituire **{type}** con:
+Fornisce all'utente lo storico dei dati relativi alla città cercata.
+I parametri da inserire nel **Body** sono: "start", "end", "name". Se start e end non vengono dichiarati verrà mostrato tutto lo storico salvato fino ad oggi della città richiesta.
 
-  * sunrise -> per conoscere le statistiche dell'alba
-  * Sunset -> per conoscere le statistiche del tramonto
-  * all -> per conoscere le statistiche sia di alba che tramonto 
+**Esempio**
+
+chiamata:
+
+![Schermata 2021-01-14 alle 17 41 32 PM](https://user-images.githubusercontent.com/71764245/104620877-c3c96580-568f-11eb-8144-5f2f24cdc745.png)
+
+body:
+
+![Schermata 2021-01-14 alle 17 40 40 PM](https://user-images.githubusercontent.com/71764245/104620764-a4cad380-568f-11eb-846a-62b305cdf6fd.png)
+
+risposta:
+
+![Schermata 2021-01-14 alle 17 42 15 PM](https://user-images.githubusercontent.com/71764245/104620958-de034380-568f-11eb-8477-e3231b567d58.png)
 	
-L'utente dovrà sostituire **{period}** con:
+4.
+Tipo | Path |
+---- | ---- |
+Post | localhost:8080/Stats |
 
-  * il valore numerico del periodo dello storico che si vuole visualizzare
+Fornisce all'utente le statistiche di alba e tramonto di una certa città in base al periodo selezionato.
+I parametri da inserire nel **Body** sono: "start", "end", "name". Se start e end non vengono dichiarati verranno mostrate le statistiche calcolate su tutto il periodo presente nello storico.
+
+**Esempio**
+
+chiamata:
+
+![Schermata 2021-01-14 alle 17 49 50 PM](https://user-images.githubusercontent.com/71764245/104621914-eb6cfd80-5690-11eb-800d-9bbfdef0be7a.png)
+
+body:
+
+![Schermata 2021-01-14 alle 17 50 36 PM](https://user-images.githubusercontent.com/71764245/104622009-06d80880-5691-11eb-88d3-9a6783403c23.png)
+
+risposta:
+
+![Schermata 2021-01-14 alle 17 50 58 PM](https://user-images.githubusercontent.com/71764245/104622055-16575180-5691-11eb-8626-5b67d84a7f3c.png)
+
+5.
+Tipo | Path |
+---- | ---- |
+Post | localhost:8080/Variances |
+
+Fornisce all'utente informazione riguardante la variazione massima o minima di alba e tramonto di una città rispetto a certo periodo.
+I parametri da inserire nel **Body** sono: "start", "end", "name", "type". Se start e end non vengono dichiarati verranno mostrate le variazioni di alba e tramonto calcolate su tutto il periodo presente nello storico.
+
+**Esempio**
+
+richiesta:
+
+![Schermata 2021-01-14 alle 17 52 55 PM](https://user-images.githubusercontent.com/71764245/104622286-59b1c000-5691-11eb-94fa-9946fcce756f.png)
+
+body:
+
+![Schermata 2021-01-14 alle 17 53 35 PM](https://user-images.githubusercontent.com/71764245/104622368-70f0ad80-5691-11eb-85ff-9e68a8f00a47.png)
+
+risposta:
+
+![Schermata 2021-01-14 alle 17 54 01 PM](https://user-images.githubusercontent.com/71764245/104622409-8239ba00-5691-11eb-9e55-c03317c98ed9.png)
 	
 ## UML
 * Casi d'uso:

@@ -14,16 +14,16 @@ to do
 * **Keys:**
 	* paese = città scelta dall'utente
 	
-Per le chiamate di tipo **Post** i parametri vengono passati attraverso un **Request Body**.
+* Per le chiamate di tipo **Post** i parametri vengono passati attraverso un **Request Body**.
 I parametri che dovranno essere passati sono:
 
-"start": (scrivere la data di inizio nel formato dd-MM-yyyy)
+* "start": (scrivere la data di inizio nel formato dd-MM-yyyy)
 
-"end": (scrivere la data di fine nel formato dd-MM-yyyy)
+* "end": (scrivere la data di fine nel formato dd-MM-yyyy)
 
-"name": (scrivere il nome della città della quale si vogliono conoscere i dati)
+* "name": (scrivere il nome della città della quale si vogliono conoscere i dati)
 
-"type": (scrivere "min" o "max")
+* "type": (scrivere "min" o "max")
 
 1.
 Tipo | Path |

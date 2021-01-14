@@ -15,7 +15,6 @@ to do
 	* paese = città scelta dall'utente
 	
 Per le chiamate di tipo **Post** i parametri vengono passati attraverso un **Request Body**.
-
 I parametri che dovranno essere passati sono:
 
 "start": (scrivere la data di inizio nel formato dd-MM-yyyy)

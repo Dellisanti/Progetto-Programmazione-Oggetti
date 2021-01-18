@@ -42,7 +42,7 @@ public class restController {
 	 * @throws ParseException 
 	 */
 	
-	@GetMapping(value="/weather/{paese}")
+	@GetMapping(value="/Weather/{paese}")
 	public ResponseEntity<Object> ShowWeather(@PathVariable("paese") String paese) {
 		return new ResponseEntity<>(weather.getWeather(paese), HttpStatus.OK);
 	}
@@ -52,7 +52,7 @@ public class restController {
 	 * @return Ritornano le città presenti nell'archivio.
 	 */
 	
-	@GetMapping(value="/weather")
+	@GetMapping(value="/CityMonitor")
 	public WeatherClass ShowArchive() {
 		return new WeatherClass();
 	}
@@ -66,7 +66,7 @@ public class restController {
 	 * @throws InvalidBodyException 
 	 */
 	
-	@PostMapping(value="/history")
+	@PostMapping(value="/History")
 	public ResponseEntity<Object> ShowHistory(@RequestBody RequestBodyClass body) throws ParseException, InvalidBodyException{
 		return new ResponseEntity<>(filters.ShowFilters(body),HttpStatus.OK);
 	}
@@ -81,7 +81,7 @@ public class restController {
 	 * @throws InvalidBodyException 
 	 */
 	
-	@PostMapping(value="/stats")
+	@PostMapping(value="/Stats")
 	public ResponseEntity<Object> ShowStatistics(@RequestBody RequestBodyClass body) throws ParseException, InvalidBodyException {
 		return new ResponseEntity<>(stats.ShowStats(body),HttpStatus.OK);
 	}
@@ -94,7 +94,7 @@ public class restController {
 	 * @throws InvalidBodyException
 	 */
 	
-	@PostMapping(value="/variances")
+	@PostMapping(value="/Variances")
 	public ResponseEntity<Object> ShowVariances(@RequestBody RequestBodyClass body) throws ParseException, InvalidBodyException {
 		return new ResponseEntity<>(variance.ShowVariances(body),HttpStatus.OK);
 	}

@@ -5,9 +5,6 @@ Repository creata per prova d'esame gennaio 2021 per il corso di programmazione 
 L'applicazione utilizza l'API Current Weather Data di OpenWeather per accedere ai dati di alba e tramonto di una certa città.
 I dati vengono poi salvati per creare uno storico. Su di esso vengono fatte delle analisi riguardati la variazione di orario di alba e tramonto della città scelta dall'utente.
 
-## Come utilizzare
-
-to do
 
 ## Rotte applicazione
 
@@ -31,6 +28,7 @@ Tipo | Path |
 Get | localhost:8080/Weather/{paese} |
 
 Fornisce all'utente orario di alba e tramonto della giornata odierna della città cercata.
+
 Sostituire **paese** con la città da cercare.
 
 **Esempio** 
@@ -65,8 +63,11 @@ Tipo | Path |
 ---- | ---- |
 Post | localhost:8080/History |
 
-Fornisce all'utente lo storico dei dati relativi alla città cercata.
-I parametri da inserire nel **Body** sono: "start", "end", "name". Se start e end non vengono dichiarati verrà mostrato tutto lo storico salvato fino ad oggi della città richiesta.
+Fornisce all'utente lo storico dei dati relativi alla città cercata ordinati in modo crescente per data.
+
+I parametri da inserire nel **Body** sono: "start", "end", "name".
+
+Se start e end non vengono dichiarati verranno presi come dati di default per start il primo e per end l'ultimo giorno disponibile in archivio.
 
 **Esempio**
 
@@ -87,8 +88,11 @@ Tipo | Path |
 ---- | ---- |
 Post | localhost:8080/Stats |
 
-Fornisce all'utente le statistiche di alba e tramonto di una certa città in base al periodo selezionato.
-I parametri da inserire nel **Body** sono: "start", "end", "name". Se start e end non vengono dichiarati verranno mostrate le statistiche calcolate su tutto il periodo presente nello storico.
+Fornisce all'utente le statistiche di alba e tramonto di una certa città in base al periodo selezionato. Le statistiche consistono nel visualizzare a schermo la differenza(in positivo e/o in negativo) di orario di alba e tramonto di un certo giorno rispetto ad un'altro.
+
+I parametri da inserire nel **Body** sono: "start", "end", "name". 
+
+Se start e end non vengono dichiarati verranno presi come dati di default per start il primo e per end l'ultimo giorno disponibile in archivio.
 
 **Esempio**
 
@@ -109,8 +113,11 @@ Tipo | Path |
 ---- | ---- |
 Post | localhost:8080/Variances |
 
-Fornisce all'utente informazione riguardante la variazione massima o minima di alba e tramonto di una città rispetto a certo periodo.
-I parametri da inserire nel **Body** sono: "start", "end", "name", "type". Se start e end non vengono dichiarati verranno mostrate le variazioni di alba e tramonto calcolate su tutto il periodo presente nello storico.
+Fornisce all'utente informazione riguardante la variazione massima o minima(in base a quella richiesta dall'utente) di alba e tramonto dellla città cercata rispetto a certo periodo.
+
+I parametri da inserire nel **Body** sono: "start", "end", "name", "type".
+
+Se start e end non vengono dichiarati verranno mostrate le variazioni di alba e tramonto calcolate su tutto il periodo presente nello storico. Start e end prendono come default rispettivamente la prima e l'ultima data disponibili in archivio.
 
 **Esempio**
 
@@ -159,12 +166,14 @@ risposta:
 ![Schermata 2021-01-03 alle 15 49 25 PM](https://user-images.githubusercontent.com/71764245/103481499-ae288600-4ddb-11eb-84b7-839d35fee117.png)
 
 ## Possibile implementazione del progetto:
-Un possibile caso di utilizzo della nostra applicazione potrebbe essere l'utilizzo urbano che prevede l'accensione e lo spegnimento dell'illuminazione pubblica in base a orario di alba e tramonto. Così da rendere automatico e più efficiente l'illuminazione pubblica ed evitando sprechi corrente.
+Un possibile caso di implementazione della nostra applicazione potrebbe essere l'utilizzo urbano che prevede l'accensione e lo spegnimento dell'illuminazione pubblica in base a orario di alba e tramonto. Così da rendere automatico e più efficiente l'illuminazione pubblica ed evitando sprechi di corrente.
 
 ## Autori
-Dellisanti Francesco
-
-De Ritis Riccardo
+ | email |
+---- | ---- |
+Dellisanti Francesco 50% | S1095745@studenti.univpm.it |
+---- | ---- |
+De Ritis Riccardo 50% | S1094657@studenti.univpm.it |
 
 
 

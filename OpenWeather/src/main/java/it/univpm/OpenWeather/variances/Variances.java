@@ -1,4 +1,4 @@
-package it.univpm.OpenWeather.service;
+package it.univpm.OpenWeather.variances;
 
 import java.util.Vector;
 
@@ -9,6 +9,8 @@ import it.univpm.OpenWeather.exception.InvalidBodyException;
 import it.univpm.OpenWeather.model.City;
 import it.univpm.OpenWeather.model.Orari;
 import it.univpm.OpenWeather.model.RequestBodyClass;
+import it.univpm.OpenWeather.service.Archive;
+import it.univpm.OpenWeather.service.ConvertedDate;
 
 /**
  * @author De Ritis Riccardo
@@ -68,7 +70,6 @@ public class Variances {
 				sunrise *= -1;
 			if(sunset<0)
 				sunset *= -1;
-			System.out.println(sunrise+"   "+sunset);
 			if(maxSunrise<sunrise) {
 				maxSunrise=sunrise;
 				giornoMaxSunrise = i;

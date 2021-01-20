@@ -11,8 +11,8 @@ import it.univpm.OpenWeather.filters.Filters;
 import it.univpm.OpenWeather.model.RequestBodyClass;
 import it.univpm.OpenWeather.model.WeatherClass;
 import it.univpm.OpenWeather.service.OpenWeather;
-import it.univpm.OpenWeather.service.Variances;
 import it.univpm.OpenWeather.statistics.Statistics;
+import it.univpm.OpenWeather.variances.Variances;
 
 /**
  * Rappresenta la classe che gestisce tutte le chiamate al server

@@ -35,11 +35,11 @@ Sostituire **paese** con la città da cercare.
 
 chiamata:
 
-![Schermata 2021-01-14 alle 17 23 42 PM](https://user-images.githubusercontent.com/71764245/104618671-4f8dc280-568d-11eb-930f-06700298472a.png)
+![Schermata 2021-01-20 alle 12 50 47 PM](https://user-images.githubusercontent.com/71764245/105171194-3d44d600-5b1e-11eb-9f46-59f2e2db4017.png)
 
 risposta:
 
-![Schermata 2021-01-14 alle 17 25 02 PM](https://user-images.githubusercontent.com/71764245/104618804-75b36280-568d-11eb-9d6b-5a407cafb974.png)
+![Schermata 2021-01-20 alle 12 50 38 PM](https://user-images.githubusercontent.com/71764245/105171264-4f267900-5b1e-11eb-9693-479b2aaef531.png)
 
 2.
 Tipo | Path |
@@ -169,11 +169,11 @@ risposta:
 Un possibile caso di implementazione della nostra applicazione potrebbe essere l'utilizzo urbano che prevede l'accensione e lo spegnimento dell'illuminazione pubblica in base a orario di alba e tramonto. Così da rendere automatico e più efficiente l'illuminazione pubblica ed evitando sprechi di corrente.
 
 ## Autori
- | email |
+Nome | contributo | email |
 ---- | ---- |
-Dellisanti Francesco 50% | S1095745@studenti.univpm.it |
+Dellisanti Francesco | 50% | S1095745@studenti.univpm.it |
 ---- | ---- |
-De Ritis Riccardo 50% | S1094657@studenti.univpm.it |
+De Ritis Riccardo | 50% | S1094657@studenti.univpm.it |
 
 
 

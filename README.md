@@ -170,9 +170,8 @@ Un possibile caso di implementazione della nostra applicazione potrebbe essere l
 
 ## Autori
 Nome | contributo | email |
----- | ---- |
+---- | ---- | ---- |
 Dellisanti Francesco | 50% | S1095745@studenti.univpm.it |
----- | ---- |
 De Ritis Riccardo | 50% | S1094657@studenti.univpm.it |
 
 
